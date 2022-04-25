@@ -1,0 +1,34 @@
+type Query {
+  allCourseModules:[CourseModule] @listLength(min:1, max: 4)
+}
+
+type Mutation {
+  updateIsValidated(input: CourseInput): Course
+}
+
+type CourseModule {
+  id: ID
+  moduleTitle: String
+  	@examples(values: ["Découverte du monde professionnel", "Les rouages de l'entreprise", "Histoire et panorama des média", "Panorama"])
+  courses: [Course]
+}
+
+type Course {
+  id: ID
+  courseTitle: String 
+  	@examples(values: ["Introduction", "Super cours 1", "Super cours 2", "Super cours 3"])
+  comments: String @fake(type:lorem, options:{maxNumber:10, minNumber:4})
+  isValidated: Achievment
+}
+
+enum Achievment {
+  TRUE
+  FALSE
+  INPROGRESS
+}
+
+input CourseInput {
+  id: ID
+  isValidated: Achievment
+  comments: String
+}
