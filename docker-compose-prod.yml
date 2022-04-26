@@ -10,6 +10,8 @@ services:
     environment:
       - NODE_ENV=production
       - SERVER_PORT=4000
+    env_file: 
+      - .env
     depends_on:
       - mongodb
   client:
@@ -19,7 +21,9 @@ services:
     volumes:
       - web-client-build:/app/build
     environment:
-      - NODE_ENV=production  
+      - NODE_ENV=production
+    env_file: 
+      - .env
   mongodb:
     image: mongo:4.4.9
     volumes:
