@@ -106,7 +106,6 @@ Commandes:
   Create .env.local and .env on the back end root repository with the following information : 
   - DB_DATABASE : name of the database if secret
   - DB_PASS : password of the database 
-  - DB_LINK : nom de l'image docker ou localhost si lancement du projet sans docker et en environement de developpement 
   - SECRET_JWT : Secret for connection (JWT) 
   -> Don't forget to check in the src/config/environment.dev.ts that variables are set 
   - REACT_APP_LOCALHOST : set this variable to true if not using docker
