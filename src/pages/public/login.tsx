@@ -66,7 +66,7 @@ export default function Login(): JSX.Element {
       <ColoredContainer />
       <LoginCard>
         <CardContent>
-          <Title>Login et test de CD/CI</Title>
+          <Title>Login de test de CD/CI</Title>
           {loading && errorHidden ? (
             <Loading />
           ) : (
