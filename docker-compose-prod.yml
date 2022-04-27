@@ -2,20 +2,28 @@ version: '3'
 
 services:
   server:
-    build: ../${FILE_BACK}
+    #build: ../${FILE_BACK}
+    image: ${DOCKERHUB_USERNAME}/agowork-deploy-server
     command: sh -c "npm run build && npm run prod"
-    env_file: 
-      - ../${FILE_BACK}/.env
+    expose:
+      - 4000
     environment:
       - NODE_ENV=production
       - SERVER_PORT=4000
+    env_file: 
+      - .env
+    depends_on:
+      - mongodb
   client:
-    build: ./
+    #build: ./
+    image: ${DOCKERHUB_USERNAME}/agowork-deploy-client
     command: sh -c "npm run build"
     volumes:
       - web-client-build:/app/build
     environment:
-      - NODE_ENV=production  
+      - NODE_ENV=production
+    env_file: 
+      - .env
   mongodb:
     image: mongo:4.4.9
     volumes:
@@ -27,6 +35,9 @@ services:
       - MONGO_DATABASE=${DB_DATABASE} \
   nginx:
     image: nginx:1.21.3
+    depends_on:
+      - server
+      - client
     restart: always
     ports:
       - ${GATEWAY_PORT}:80
