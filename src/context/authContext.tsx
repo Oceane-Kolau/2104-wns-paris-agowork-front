@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import jwt_decode from "jwt-decode";
 
 interface UserI {
@@ -17,7 +17,7 @@ interface AuthContextI {
   setUser: (newValue: UserI | null) => void;
 }
 
-export const AuthContext = React.createContext<AuthContextI>({
+export const AuthContext = createContext<AuthContextI>({
   user: null,
   setUser: () => {},
 });
