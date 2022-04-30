@@ -70,28 +70,8 @@ export const nested = styled.li`
 `;
 
 export const Social = styled.div`
-  margin-left: 58%;
-  a {
-    padding: 0 0.8rem 0 0.8rem;
-  }
-  a:nth-child(1) {
-    color: ${colors.mediumBlue};
-  }
-  a:nth-child(2) {
-    color: ${colors.lightBlue};
-  }
-  a:nth-child(3) {
-    color: ${colors.pink};
-  }
-  a:nth-child(4) {
-    color: ${colors.fushia};
-  }
-  @media only screen and (min-width: 830px) and (max-width: 1250px) {
-    margin-left: 38%;
-  }
-  @media only screen and (max-width: 830px) {
-    margin-left: 5%;
-  } ;
+  right: 4rem;
+  position: fixed;
 `;
 
 export const hide = styled.div`

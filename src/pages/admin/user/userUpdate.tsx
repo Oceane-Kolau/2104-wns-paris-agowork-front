@@ -50,7 +50,7 @@ export default function UserUpdate(): JSX.Element {
     control,
     reset,
     formState: { errors },
-  } = useForm({ defaultValues: preloadedValues });
+  } = useForm<UserUpdateValues>({ defaultValues: preloadedValues });
 
   const [updateUser] = useMutation(UPDATE_USER, {
     onCompleted: (data) => {
@@ -153,7 +153,7 @@ export default function UserUpdate(): JSX.Element {
                         id="campus-select"
                         name="campus"
                         defaultValue={
-                          !user.getUserById.campus.id
+                          !user.getUserById.campus
                             ? ""
                             : user.getUserById.campus.id
                         }

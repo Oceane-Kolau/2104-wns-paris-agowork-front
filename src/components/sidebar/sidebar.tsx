@@ -19,7 +19,6 @@ import {
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
-import SocialMedia from "./socialMedia";
 import {
   TopBar,
   SideNav,
@@ -28,6 +27,7 @@ import {
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
 import { AuthContext } from "../../context/authContext";
+import NeedHelpButton from "./needHelpButton";
 
 interface State {
   to: To;
@@ -48,7 +48,7 @@ const Sidebar = (): JSX.Element => {
     setOpen(false);
   };
 
-  const handleLogout = (event: any) => {
+  const handleLogout = () => {
     localStorage.clear();
     navigate("/connexion");
   };
@@ -69,7 +69,7 @@ const Sidebar = (): JSX.Element => {
             <Menu />
           </BurgerButton>
           <CompanyName>AgoWork</CompanyName>
-          <SocialMedia />
+          <NeedHelpButton />
         </TopBar>
       </AppBar>
       <SideNav variant="permanent" open={open}>
