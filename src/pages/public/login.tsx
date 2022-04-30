@@ -34,7 +34,7 @@ export default function Login(): JSX.Element {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<LoginValues>();
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {

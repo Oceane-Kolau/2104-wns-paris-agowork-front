@@ -65,9 +65,12 @@ export const ColoredButton = styled(Button)`
 `;
 
 export const BorderedButton = styled(Button)`
-  border: 2px solid ${colors.fushia};
-  color: ${colors.fushia};
+  border: 2px solid ${colors.mediumBlue};
+  color: ${colors.mediumBlue};
   width: 100%;
+  &:hover {
+    border: 2px solid ${colors.mediumBlue};
+  }
 `;
 
 export const ContainerButton = styled.div`
