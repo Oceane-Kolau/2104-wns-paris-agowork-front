@@ -19,7 +19,6 @@ import {
 import { DrawerHeader, AppBar } from "../../assets/styles/sidebar/muiSidebar";
 import ProfileSidebar from "./profileSidebar";
 import Elements from "./elements";
-import SocialMedia from "./socialMedia";
 import {
   TopBar,
   SideNav,
