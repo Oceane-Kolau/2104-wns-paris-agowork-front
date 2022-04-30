@@ -16,7 +16,7 @@ import InputSelect from "../../form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
 
-type FormValues = {
+type MoodValues = {
   id: string;
   email: string;
 };
@@ -27,7 +27,7 @@ export default function MoodCard(): JSX.Element {
   const { data: allMoods } = useQuery<GetMoodsType>(GET_ALL_MOODS);
   const { data: loggedUser, refetch } = useQuery(GET_LOGGED_USER);
   const [currentMood, setCurrentMood] = useState("");
-  const { handleSubmit, control, reset } = useForm();
+  const { handleSubmit, control, reset } = useForm<MoodValues>();
 
   const [updateUserMood] = useMutation(UPDATE_USER_MOOD, {
     onCompleted: (data) => {
@@ -40,7 +40,7 @@ export default function MoodCard(): JSX.Element {
     },
   });
 
-  const handleMood: SubmitHandler<FormValues> = (input) => {
+  const handleMood: SubmitHandler<MoodValues> = (input) => {
     updateUserMood({
       variables: {
         id: input.id,

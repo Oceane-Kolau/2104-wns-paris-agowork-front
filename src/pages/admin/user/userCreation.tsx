@@ -36,7 +36,7 @@ export default function UserCreation(): JSX.Element {
     control,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<UserCreationValues>();
   const { error: errorCampus, data: allCampus } =
     useQuery<GetCampusType>(GET_ALL_CAMPUS);
 

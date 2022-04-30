@@ -28,6 +28,7 @@ import {
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
 import { AuthContext } from "../../context/authContext";
+import NeedHelpButton from "./needHelpButton";
 
 interface State {
   to: To;
@@ -48,7 +49,7 @@ const Sidebar = (): JSX.Element => {
     setOpen(false);
   };
 
-  const handleLogout = (event: any) => {
+  const handleLogout = () => {
     localStorage.clear();
     navigate("/connexion");
   };
@@ -69,7 +70,7 @@ const Sidebar = (): JSX.Element => {
             <Menu />
           </BurgerButton>
           <CompanyName>AgoWork</CompanyName>
-          <SocialMedia />
+          <NeedHelpButton />
         </TopBar>
       </AppBar>
       <SideNav variant="permanent" open={open}>
