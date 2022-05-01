@@ -3,7 +3,6 @@ import Course, { CourseProps } from "./course";
 import { ModuleWrapper } from "../../../assets/styles/course/elements";
 
 export type CourseModuleProps = {
-  id?: string;
   moduleTitle: string;
   courses: CourseProps[];
 };
