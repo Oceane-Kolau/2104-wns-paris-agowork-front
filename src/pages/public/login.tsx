@@ -34,7 +34,7 @@ export default function Login(): JSX.Element {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<LoginValues>();
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
@@ -66,7 +66,7 @@ export default function Login(): JSX.Element {
       <ColoredContainer />
       <LoginCard>
         <CardContent>
-          <Title>Login pour tester la CD/CI</Title>
+          <Title>Login</Title>
           {loading && errorHidden ? (
             <Loading />
           ) : (

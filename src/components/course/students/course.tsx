@@ -20,11 +20,10 @@ import { Form } from "../../../assets/styles/form";
 import { FormElements } from "../../../assets/styles/global";
 
 export type CourseProps = {
-  id?: string;
+  id: string;
   courseTitle: string;
   isValidated: string;
   comments: string;
-  subCourse?: unknown;
 };
 
 export const UPDATE_ISVALIDATED = gql`

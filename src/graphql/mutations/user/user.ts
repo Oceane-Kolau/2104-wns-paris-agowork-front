@@ -53,3 +53,9 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const UPDATE_HELP = gql`
+  mutation updateNeedHelp($needHelp: Boolean!) {
+    updateNeedHelp(needHelp: $needHelp)
+  }
+`;

@@ -31,7 +31,7 @@ export default function MoodCreation(): JSX.Element {
     reset,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<MoodCreationValues>();
   const [createMood] = useMutation(CREATE_MOOD, {
     onCompleted: (data) => {
       setLatestMood(data.createMood);
@@ -40,13 +40,13 @@ export default function MoodCreation(): JSX.Element {
       console.log(error);
     },
   });
-  const watchIcon = watch("personnalIcon", false);
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) =>
-      console.log(value, name, type)
-    );
-    return () => subscription.unsubscribe();
-  }, [watch]);
+  // const watchIcon = watch('personnalIcon', false);
+  // useEffect(() => {
+  //   const subscription = watch((value, { name, type }) =>
+  //     console.log(value, name, type)
+  //   );
+  //   return () => subscription.unsubscribe();
+  // }, [watch]);
   const handleMood: SubmitHandler<MoodCreationValues> = (input) => {
     createMood({
       variables: {
@@ -71,7 +71,7 @@ export default function MoodCreation(): JSX.Element {
                 register={register}
                 required
               />
-              {watchIcon === false ? (
+              {/* {!watchIcon ? (
                 <InputSelect
                   id="icon-select"
                   name="icon"
@@ -87,17 +87,17 @@ export default function MoodCreation(): JSX.Element {
                 </InputSelect>
               ) : (
                 <></>
-              )}
-              {watchIcon && (
+              )} */}
+              {/* {watchIcon && (
                 <InputText label="icon" type="text" register={register} />
-              )}
+              )} */}
             </BoxIcon>
-            <Typography sx={{ marginTop: 2 }}>
-              {watchIcon === false
+            {/* <Typography sx={{ marginTop: 2 }}>
+              {!watchIcon
                 ? "Ajouter un icon personnalisé"
                 : "Revenir à la sélection"}
-              <Switch {...register("personnalIcon")} size="small" />
-            </Typography>
+              <Switch {...register('personnalIcon')} size="small" />
+            </Typography> */}
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
         </MoodForm>

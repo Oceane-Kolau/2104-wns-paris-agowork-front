@@ -27,7 +27,7 @@ export default function CampusCreation(): JSX.Element {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<CampusCreationValues>();
 
   const [createCampus] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
