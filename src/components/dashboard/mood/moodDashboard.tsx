@@ -9,10 +9,10 @@ import {
   TitleMood,
 } from "../../../assets/styles/dashboard/mood";
 import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
-import SolidButton from "../../buttons/solidButton";
+import SolidButton from "../../global/buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
-import { GetMoodsType } from "../../../types/moods";
-import InputSelect from "../../form/inputSelect";
+import { GetMoodsType } from "../../../types/mood";
+import InputSelect from "../../global/form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
 
@@ -35,9 +35,7 @@ export default function MoodCard(): JSX.Element {
       // refetch GET_LOGGED_USER query to get the updated mood
       refetch();
     },
-    onError: (error) => {
-      console.log(error);
-    },
+    onError: () => {},
   });
 
   const handleMood: SubmitHandler<MoodValues> = (input) => {

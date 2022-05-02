@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate, useLocation, To } from "react-router-dom";
+import { useNavigate, To } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
   CssBaseline,
@@ -28,10 +28,6 @@ import {
 } from "../../assets/styles/sidebar/sidebar";
 import { AuthContext } from "../../utils/context/authContext";
 import NeedHelpButton from "./needHelpButton";
-
-interface State {
-  to: To;
-}
 
 const Sidebar = (): JSX.Element => {
   const { user } = useContext(AuthContext);

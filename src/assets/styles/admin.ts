@@ -4,7 +4,6 @@ import { Card } from "@mui/material";
 
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
-
   &:focus,
   &:hover,
   &:visited,
@@ -15,6 +14,6 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const CardAdmin = styled(Card)`
-    max-width: 345px;
-    text-align: center;
+  max-width: 345px;
+  text-align: center;
 `;

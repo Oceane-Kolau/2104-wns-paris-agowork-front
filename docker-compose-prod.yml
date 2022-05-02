@@ -2,7 +2,6 @@ version: '3'
 
 services:
   server:
-    #build: ../${FILE_BACK}
     image: ${DOCKERHUB_USERNAME}/agowork-deploy-server
     command: sh -c "npm run build && npm run prod"
     expose:
@@ -15,7 +14,6 @@ services:
     depends_on:
       - mongodb
   client:
-    #build: ./
     image: ${DOCKERHUB_USERNAME}/agowork-deploy-client
     command: sh -c "npm run build"
     volumes:

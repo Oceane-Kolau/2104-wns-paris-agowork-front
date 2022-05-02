@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { BrokenImage, ImageSearch } from "@mui/icons-material";
+import { ImageSearch } from "@mui/icons-material";
 import { Card, CardContent, CardMedia, Grid, MenuItem } from "@mui/material";
 import { UPDATE_USER } from "../../../graphql/mutations/user/user";
 import { Form } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
 import { CampusType, GetCampusType } from "../../../types/campus";
-import SolidButton from "../../../components/buttons/solidButton";
-import InputSelect from "../../../components/form/inputSelect";
+import SolidButton from "../../../components/global/buttons/solidButton";
+import InputSelect from "../../../components/global/form/inputSelect";
 import { CardTitle } from "../../../assets/styles/list/list";
 import { GET_ONE_USER } from "../../../graphql/queries/user/user";
-import ProfileForm from "../../../components/form/profileForm";
+import ProfileForm from "../../../components/global/form/profileForm";
 import { roles } from "../../../types/user";
 
 export type UserUpdateValues = {
@@ -44,20 +44,16 @@ export default function UserUpdate(): JSX.Element {
     id: id,
   };
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<UserUpdateValues>({ defaultValues: preloadedValues });
+  const { register, handleSubmit, control } = useForm<UserUpdateValues>({
+    defaultValues: preloadedValues,
+  });
 
   const [updateUser] = useMutation(UPDATE_USER, {
-    onCompleted: (data) => {
-      console.log("updatedData", data);
+    onCompleted: () => {
       refetch();
     },
     onError: (error) => {
+      // eslint-disable-next-line no-console
       error.graphQLErrors.map(({ message }) => console.log(message));
     },
   });

@@ -1,5 +1,5 @@
 import { CampusType } from "./campus";
-import { MoodType } from "./moods";
+import { MoodType } from "./mood";
 
 export type UserType = {
   id?: string;
@@ -15,6 +15,16 @@ export type UserType = {
 
 export type GetUsersType = {
   getAllUsers: UserType[];
+};
+
+export type UserCreationValues = {
+  firstname: string;
+  lastname: string;
+  town: string;
+  password: string;
+  email: string;
+  role: string;
+  campus: string;
 };
 
 export const roles = [

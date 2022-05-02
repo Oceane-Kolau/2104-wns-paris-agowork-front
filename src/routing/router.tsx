@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import UserCreation from "../pages/admin/user/userCreation";
 import Dashboard from "../pages/public/dashboard";
 import Login from "../pages/public/login";
 import ModuleList from "../components/course/students/moduleList";
 import Ressources from "../pages/public/ressources";
-import CampusCreation from "../pages/admin/campus/campusCreation";
+import AllCampus from "../pages/admin/campus/allCampus";
 import PrivateRoute from "./privateRoute";
 import AdminRoute from "./adminRoute";
-import GeneralForm from "../pages/admin/administrationGeneral";
-import MoodCreation from "../pages/admin/mood/moodCreation";
+import AdminDashboard from "../pages/admin/AdminDashboard";
+import AllMoods from "../pages/admin/mood/allMoods";
 import UserUpdate from "../pages/admin/user/userUpdate";
-import AdminRessource from "../pages/admin/adminRessource";
+import AllRessources from "../pages/admin/ressource/allRessources";
+import AllUsers from "../pages/admin/user/allUsers";
 
 const Router = (): JSX.Element => {
   return (
@@ -46,7 +46,7 @@ const Router = (): JSX.Element => {
           path="/general"
           element={
             <AdminRoute>
-              <GeneralForm />
+              <AdminDashboard />
             </AdminRoute>
           }
         />
@@ -54,7 +54,7 @@ const Router = (): JSX.Element => {
           path="/general/campus"
           element={
             <AdminRoute>
-              <CampusCreation />
+              <AllCampus />
             </AdminRoute>
           }
         />
@@ -62,7 +62,7 @@ const Router = (): JSX.Element => {
           path="/general/mood"
           element={
             <AdminRoute>
-              <MoodCreation />
+              <AllMoods />
             </AdminRoute>
           }
         />
@@ -70,7 +70,7 @@ const Router = (): JSX.Element => {
           path="/general/ressource"
           element={
             <AdminRoute>
-              <AdminRessource />
+              <AllRessources />
             </AdminRoute>
           }
         />
@@ -78,7 +78,7 @@ const Router = (): JSX.Element => {
           path="/general/utilisateur"
           element={
             <AdminRoute>
-              <UserCreation />
+              <AllUsers />
             </AdminRoute>
           }
         />

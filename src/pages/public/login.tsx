@@ -12,29 +12,20 @@ import {
   LoginContainer,
   ColoredContainer,
 } from "../../assets/styles/login/login";
-import Loading from "../../components/loading/loading";
+import Loading from "../../components/global/loading/loading";
 import { AuthContext } from "../../utils/context/authContext";
-import SolidButton from "../../components/buttons/solidButton";
-import ErrorPopup from "../../components/error/errorPopup";
-import InputText from "../../components/form/inputText";
-import InputPassword from "../../components/form/inputPassword";
-
-export type LoginValues = {
-  password: string;
-  email: string;
-};
+import SolidButton from "../../components/global/buttons/solidButton";
+import ErrorPopup from "../../components/global/error/errorPopup";
+import InputText from "../../components/global/form/inputText";
+import InputPassword from "../../components/global/form/inputPassword";
+import { LoginValues } from "../../types/login";
 
 export default function Login(): JSX.Element {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorHidden, setErrorHidden] = useState(true);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<LoginValues>();
+  const { register, handleSubmit, reset } = useForm<LoginValues>();
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
