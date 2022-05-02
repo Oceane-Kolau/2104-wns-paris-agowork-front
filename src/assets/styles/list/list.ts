@@ -92,5 +92,3 @@ export const RoleTag = styled.div`
   background: ${colors.trigradient};
   margin-bottom: 0.5rem;
 `;
-
-// 2.45 for exact up tag

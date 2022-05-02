@@ -13,7 +13,7 @@ import {
   ColoredContainer,
 } from "../../assets/styles/login/login";
 import Loading from "../../components/loading/loading";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../utils/context/authContext";
 import SolidButton from "../../components/buttons/solidButton";
 import ErrorPopup from "../../components/error/errorPopup";
 import InputText from "../../components/form/inputText";

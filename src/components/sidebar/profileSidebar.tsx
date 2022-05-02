@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { Home } from "@mui/icons-material";
 import { ListItem, List, ListItemIcon, ListItemText } from "@mui/material";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../utils/context/authContext";
 import { Initial, ProfileAvatar } from "../../assets/styles/sidebar/sidebar";
 
 const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {

@@ -4,7 +4,7 @@ import { Box, MenuItem, Switch, Typography } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import InputText from "../../../components/form/inputText";
 import { CREATE_MOOD } from "../../../graphql/mutations/social/mood";
-import { Form, FormBox, MoodForm } from "../../../assets/styles/form";
+import { Form, FormBox, CardForm } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import {
   BoxIcon,
@@ -12,7 +12,7 @@ import {
   LatestCreatedTitle,
 } from "../../../assets/styles/list/list";
 import InputSelect from "../../../components/form/inputSelect";
-import { moods } from "../../../components/mood/mood.enum";
+import { moods } from "../../../utils/enumMood/mood.enum";
 import MoodListing from "./moodListing";
 import { MoodType } from "../../../types/moods";
 import MoodCard from "../../../components/cards/moodCard";
@@ -61,7 +61,7 @@ export default function MoodCreation(): JSX.Element {
   return (
     <>
       <FormBox>
-        <MoodForm>
+        <CardForm>
           <FormTitle>Ajouter un mood</FormTitle>
           <Form onSubmit={handleSubmit(handleMood)}>
             <BoxIcon>
@@ -100,7 +100,7 @@ export default function MoodCreation(): JSX.Element {
             </Typography>
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
-        </MoodForm>
+        </CardForm>
         {latestMood ? (
           <Box>
             <LatestCreatedTitle>👉&nbsp;&nbsp;Nouveau mood</LatestCreatedTitle>

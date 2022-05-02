@@ -1,27 +1,96 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import { useLocation } from "react-router-dom";
-import { Container } from "../assets/styles/global";
-import { ColoredContainer, LoginContainer } from "../assets/styles/login/login";
-import Page from "./page";
-import Sidebar from "../components/sidebar/sidebar";
+import { Route, Routes } from "react-router-dom";
+import UserCreation from "../pages/admin/user/userCreation";
+import Dashboard from "../pages/public/dashboard";
+import Login from "../pages/public/login";
+import ModuleList from "../components/course/students/moduleList";
+import Ressources from "../pages/public/ressources";
+import CampusCreation from "../pages/admin/campus/campusCreation";
+import PrivateRoute from "./privateRoute";
+import AdminRoute from "./adminRoute";
+import GeneralForm from "../pages/admin/administrationGeneral";
+import MoodCreation from "../pages/admin/mood/moodCreation";
+import UserUpdate from "../pages/admin/user/userUpdate";
+import AdminRessource from "../pages/admin/adminRessource";
 
 const Router = (): JSX.Element => {
   return (
     <>
-      {useLocation().pathname !== "/connexion" ? (
-        <Box sx={{ display: "flex" }}>
-          <Sidebar />
-          <Container component="main">
-            <Page />
-          </Container>
-        </Box>
-      ) : (
-        <LoginContainer component="main">
-          <ColoredContainer />
-          <Page />
-        </LoginContainer>
-      )}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/connexion" element={<Login />} />
+        <Route
+          path="/ressources"
+          element={
+            <PrivateRoute>
+              <Ressources />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cours"
+          element={
+            <PrivateRoute>
+              <ModuleList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/general"
+          element={
+            <AdminRoute>
+              <GeneralForm />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/general/campus"
+          element={
+            <AdminRoute>
+              <CampusCreation />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/general/mood"
+          element={
+            <AdminRoute>
+              <MoodCreation />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/general/ressource"
+          element={
+            <AdminRoute>
+              <AdminRessource />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/general/utilisateur"
+          element={
+            <AdminRoute>
+              <UserCreation />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/general/utilisateur/:id"
+          element={
+            <PrivateRoute>
+              <UserUpdate />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </>
   );
 };

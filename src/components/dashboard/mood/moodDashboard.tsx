@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
 import { MenuItem } from "@mui/material";
-import { AuthContext } from "../../../context/authContext";
+import { AuthContext } from "../../../utils/context/authContext";
 import {
   Card,
   ContentCard,

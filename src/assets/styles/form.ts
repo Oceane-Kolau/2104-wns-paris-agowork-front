@@ -26,22 +26,10 @@ export const FormBox = styled.div`
   align-items: center;
 `;
 
-export const CampusForm = styled(Card)`
+export const CardForm = styled(Card)`
   padding: 2rem;
   width: 40%;
   margin-right: 11rem;
-  max-width: 80%;
-  text-align: center;
-  @media only screen and (max-width: 1130px) {
-    width: 100%;
-    margin-right: 0rem;
-  } ;
-`;
-
-export const MoodForm = styled(Card)`
-  padding: 2rem;
-  margin-right: 11rem;
-  width: 40%;
   max-width: 80%;
   text-align: center;
   @media only screen and (max-width: 1130px) {

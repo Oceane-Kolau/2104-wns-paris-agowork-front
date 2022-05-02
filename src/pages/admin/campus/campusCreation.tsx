@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { Box } from "@mui/material";
 import InputText from "../../../components/form/inputText";
 import { CREATE_CAMPUS } from "../../../graphql/mutations/infrastructures/campus";
-import { CampusForm, Form, FormBox } from "../../../assets/styles/form";
+import { CardForm, Form, FormBox } from "../../../assets/styles/form";
 import SolidButton from "../../../components/buttons/solidButton";
 import CampusListing from "./campusListing";
 import {
@@ -46,7 +46,7 @@ export default function CampusCreation(): JSX.Element {
   return (
     <>
       <FormBox>
-        <CampusForm>
+        <CardForm>
           <FormTitle>Ajouter un campus</FormTitle>
           <Form onSubmit={handleSubmit(handleCampus)}>
             <InputText label="name" type="text" register={register} required />
@@ -54,7 +54,7 @@ export default function CampusCreation(): JSX.Element {
             <InputText label="address" type="text" register={register} false />
             <SolidButton type="submit" textButton="Ajouter ce campus" />
           </Form>
-        </CampusForm>
+        </CardForm>
         {latestCampus ? (
           <Box>
             <LatestCreatedTitle>

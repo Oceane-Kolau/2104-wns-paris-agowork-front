@@ -26,7 +26,7 @@ import {
   ColoredSvg,
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../utils/context/authContext";
 import NeedHelpButton from "./needHelpButton";
 
 interface State {

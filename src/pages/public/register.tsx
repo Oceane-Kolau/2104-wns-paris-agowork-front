@@ -23,7 +23,7 @@ import {
 } from "../../assets/styles/login/login";
 import { GroupForm } from "../../assets/styles/form";
 import Loading from "../../components/loading/loading";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../utils/context/authContext";
 import SolidButton from "../../components/buttons/solidButton";
 import ErrorPopup from "../../components/error/errorPopup";
 

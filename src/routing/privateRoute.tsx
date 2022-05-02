@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../utils/context/authContext";
 
 const PrivateRoute = ({ children }: any) => {
   const { pathname } = useLocation(); // we have access to the location before we return something
