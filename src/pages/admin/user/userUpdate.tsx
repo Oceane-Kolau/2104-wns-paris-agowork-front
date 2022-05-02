@@ -74,7 +74,7 @@ export default function UserUpdate(): JSX.Element {
             <Grid
               container
               rowSpacing={3}
-              columnSpacing={{ xs: 1, sm: 2, md: 12 }}
+              columnSpacing={{ xs: 1, sm: 2, md: 10 }}
             >
               <Grid item xs={12} sm={12} md={6}>
                 <Card>
@@ -129,7 +129,7 @@ export default function UserUpdate(): JSX.Element {
                   textButton="Modifier les informations"
                 />
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={12} md={6}>
                 <Card>
                   <CardContent>
                     <CardTitle>Informations administratives</CardTitle>

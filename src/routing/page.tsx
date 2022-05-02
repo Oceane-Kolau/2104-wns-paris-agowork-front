@@ -4,7 +4,7 @@ import UserCreation from "../pages/admin/user/userCreation";
 import Dashboard from "../pages/public/dashboard";
 import Login from "../pages/public/login";
 import ModuleList from "../components/course/students/moduleList";
-import Ressources from "../components/ressources/ressources";
+import Ressources from "../pages/public/ressourcesListing";
 import CampusCreation from "../pages/admin/campus/campusCreation";
 import PrivateRoute from "./privateRoute";
 import AdminRoute from "./adminRoute";
@@ -26,7 +26,7 @@ const Page = (): JSX.Element => {
         />
         <Route path="/connexion" element={<Login />} />
         <Route
-          path="/mes-ressources"
+          path="/ressources"
           element={
             <PrivateRoute>
               <Ressources />

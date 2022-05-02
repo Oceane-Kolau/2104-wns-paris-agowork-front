@@ -8,7 +8,7 @@ const AdminRoute = ({ children }: any) => {
   const jwt = localStorage.getItem("jwt");
   if (
     (jwt || user) &&
-    (user?.role === "ADMIN" || user?.role === "SUPERADMIN")
+    (user?.role === "ADMIN")
   ) {
     return children;
   }

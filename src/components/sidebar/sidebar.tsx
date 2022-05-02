@@ -35,7 +35,6 @@ interface State {
 
 const Sidebar = (): JSX.Element => {
   const { user } = useContext(AuthContext);
-  const state = useLocation().state as State;
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -83,9 +82,9 @@ const Sidebar = (): JSX.Element => {
           <Elements
             text="Ressources"
             icon={<SchoolOutlined />}
-            path="/mes-ressources"
+            path="/ressources"
           />
-          {user?.role === "ADMIN" || user?.role === "SUPERADMIN" ? (
+          {user?.role === "ADMIN" ? (
             <Elements
               text="Administration"
               icon={<AdminPanelSettings />}

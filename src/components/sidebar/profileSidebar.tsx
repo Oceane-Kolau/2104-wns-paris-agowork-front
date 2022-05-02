@@ -21,7 +21,7 @@ const ProfileSidebar = ({ sidebarState }: any): JSX.Element => {
       </ListItem>
       <ListItem>
         <ListItemText>
-          <Initial>{sidebarState ? null : <h3>J M</h3>}</Initial>
+          <Initial>{sidebarState ? null : <h3>{user?.firstname[0]} {user?.lastname[0]}</h3>}</Initial>
         </ListItemText>
       </ListItem>
       <NavLink
