@@ -6,13 +6,13 @@ export default function AllRessources(): JSX.Element {
   const [latestRessourceCreated, setLatestRessourceCreated] =
     useState<boolean>(false);
 
-  const handleRefreshRessource = () => {
+  const handleRefreshRessources = () => {
     return setLatestRessourceCreated(true);
   };
 
   return (
     <>
-      <RessourceCreation handleRefreshRessource={handleRefreshRessource} />
+      <RessourceCreation handleRefreshRessources={handleRefreshRessources} />
       <RessourceListing latestRessourceCreated={latestRessourceCreated} />
     </>
   );

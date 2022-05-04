@@ -6,7 +6,6 @@ import InputText from "../global/form/inputText";
 import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { CardForm, Form, FormBox } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";
-import CampusListing from "./campusListing";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import { CampusCreationValues, CampusType } from "../../types/campus";
 import CampusCard from "./campusCard";

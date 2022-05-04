@@ -17,9 +17,15 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
   if (latestRessourceCreated) refetch();
   if (loadingRessources) return <Loading />;
   if (errorRessources) return <Typography>ERROR</Typography>;
+  console.log(ressources)
 
   return (
-    <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
+    <Grid
+      container
+      rowSpacing={3}
+      columnSpacing={{ xs: 0, sm: 2, md: 1 }}
+      justifyContent="center"
+    >
       {ressources?.getAllRessources.map((ressource: RessourceType) => (
         <RessourceCard {...ressource} key={ressource.id} />
       ))}

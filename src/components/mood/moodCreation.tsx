@@ -16,7 +16,7 @@ import { moods } from "./mood.enum";
 import { MoodType, MoodCreationValues } from "../../types/mood";
 import MoodCard from "./moodCard";
 
-export default function MoodCreation({handleRefreshMood}: any): JSX.Element {
+export default function MoodCreation({ handleRefreshMood }: any): JSX.Element {
   const [personalizedIcon, setPersonalizedIcon] = useState<boolean>(false);
   const handlePersonalizedIcon = (event: ChangeEvent<HTMLInputElement>) => {
     setPersonalizedIcon(event.target.checked);
@@ -32,7 +32,7 @@ export default function MoodCreation({handleRefreshMood}: any): JSX.Element {
   });
 
   const { register, handleSubmit, control, reset } =
-  useForm<MoodCreationValues>();
+    useForm<MoodCreationValues>();
   const handleMood: SubmitHandler<MoodCreationValues> = (input) => {
     createMood({
       variables: {

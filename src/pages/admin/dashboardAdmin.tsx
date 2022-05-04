@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import AdminCard from "../../components/dashboard/adminCard";
 
-export default function AdminDashboard(): JSX.Element {
+export default function DashboardAdmin(): JSX.Element {
   return (
     <Grid
       sx={{ mt: 2 }}

@@ -7,7 +7,7 @@ import Ressources from "../pages/public/ressources";
 import AllCampus from "../pages/admin/campus/allCampus";
 import PrivateRoute from "./privateRoute";
 import AdminRoute from "./adminRoute";
-import AdminDashboard from "../pages/admin/AdminDashboard";
+import DashboardAdmin from "../pages/admin/dashboardAdmin";
 import AllMoods from "../pages/admin/mood/allMoods";
 import UserUpdate from "../pages/admin/user/userUpdate";
 import AllRessources from "../pages/admin/ressource/allRessources";
@@ -46,7 +46,7 @@ const Router = (): JSX.Element => {
           path="/general"
           element={
             <AdminRoute>
-              <AdminDashboard />
+              <DashboardAdmin />
             </AdminRoute>
           }
         />

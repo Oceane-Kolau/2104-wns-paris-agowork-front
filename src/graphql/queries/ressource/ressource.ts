@@ -17,6 +17,7 @@ export const GET_ALL_RESSOURCES = gql`
 export const GET_ONE_RESSOURCE = gql`
   query GetRessourceById($id: ID!) {
     getRessourceById(id: $id) {
+      id
       title
       author
       description

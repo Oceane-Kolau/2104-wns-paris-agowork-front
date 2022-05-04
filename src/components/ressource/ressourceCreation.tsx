@@ -10,29 +10,36 @@ import { Form } from "../../assets/styles/form";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputText from "../global/form/inputText";
 import SolidButton from "../global/buttons/solidButton";
+import ErrorPopup from "../global/error/errorPopup";
 
 function RessourceCreation({ handleRefreshRessource }: any): JSX.Element {
   const [latestRessource, setLatestRessource] = useState<RessourceType>();
   const { register, handleSubmit, reset } = useForm<RessourceCreationValues>();
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [createRessource, { loading }] = useMutation(CREATE_RESSOURCE, {
     onCompleted: (data) => {
       setLatestRessource(data.createRessource);
       handleRefreshRessource();
     },
-    onError: () => {},
+    onError: (error) => {
+      error.graphQLErrors.map(
+        ({ message }) => setErrorMessage(message)
+      );
+    },
   });
 
   const handleRessource: SubmitHandler<RessourceCreationValues> = (input) => {
     /* eslint no-param-reassign: "error" */
     if (input.tags) {
-      input.tags = (input.tags as string).split(",");
+      input.tags = (input.tags as string).trim().split(",");
     }
+    console.log(input)
     createRessource({ variables: { input } });
     reset();
   };
 
   if (loading) return <Loading />;
+  if (errorMessage) return <ErrorPopup errorMessage={errorMessage} />;
 
   return (
     <Grid
