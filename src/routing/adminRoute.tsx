@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../utils/context/authContext";
 
 const AdminRoute = ({ children }: any) => {
   const { pathname } = useLocation(); // we have access to the location before we return something
   const { user } = useContext(AuthContext);
-  const jwt = localStorage.getItem("jwt");
-  if (
-    (jwt || user) &&
-    (user?.role === "ADMIN" || user?.role === "SUPERADMIN")
-  ) {
+
+  if (user && user?.role === "ADMIN") {
     return children;
   }
   return <Navigate to="/" state={{ to: pathname }} />;
