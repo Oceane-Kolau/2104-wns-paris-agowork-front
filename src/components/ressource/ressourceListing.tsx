@@ -30,6 +30,7 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
       alignItems="start"
       flexWrap="wrap"
       columnSpacing={{ xs: 1, sm: 2, md: 10 }}
+      data-testid="ressources"
     >
       {ressources?.getAllRessources.map((ressource: RessourceType) => (
         <RessourceCard

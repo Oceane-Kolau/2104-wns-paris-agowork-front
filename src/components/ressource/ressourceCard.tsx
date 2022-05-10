@@ -53,7 +53,7 @@ const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
             updatedAt={ressource.updatedAt as Date}
           />
         </CardContent>
-        {user!.role === "TEACHER" || user!.role === "ADMIN" ? (
+        { user && (user?.role === "TEACHER" || user?.role === "ADMIN") ? (
           <ActionsCard handleDeleteEl={handleDeleteEl} />
         ) : (
           <></>
