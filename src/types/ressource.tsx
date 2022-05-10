@@ -18,3 +18,7 @@ export type RessourceCreationValues = {
   description?: string;
   tags?: Array<string> | string;
 };
+
+export type Tags = {
+  tags: [string]
+}

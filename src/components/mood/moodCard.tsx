@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { CardContent } from "@mui/material";
-import { Delete } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
 import {
-  ActionsCard,
   BtnDelete,
   CardList,
   CardTitle,
   MoodIcon,
 } from "../../assets/styles/list/list";
+import ActionsCard from "../global/actionsCard";
 import ConfirmationModal from "../global/modal/confirmationModal";
 import { DELETE_MOOD } from "../../graphql/mutations/social/mood";
 
 const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenModal = () => setOpen(true);
+  const handleCloseModal = () => setOpen(false);
 
   const [deleteMood] = useMutation(DELETE_MOOD, {
     onCompleted: () => {
@@ -43,14 +42,10 @@ const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
           <></>
         ) : (
           <>
-            <ActionsCard disableSpacing>
-              <BtnDelete onClick={handleOpen}>
-                <Delete />
-              </BtnDelete>
-            </ActionsCard>
+            <ActionsCard handleOpenModal={handleOpenModal}/>
             <ConfirmationModal
               open={open}
-              handleClose={handleClose}
+              handleCloseModal={handleCloseModal}
               handleDelete={handleDelete}
             />
           </>

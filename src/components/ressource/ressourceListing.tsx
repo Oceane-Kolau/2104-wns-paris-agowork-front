@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_RESSOURCES } from "../../graphql/queries/ressource/ressource";
 import { GetRessourcesType, RessourceType } from "../../types/ressource";
@@ -14,22 +14,29 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
     refetch,
   } = useQuery<GetRessourcesType>(GET_ALL_RESSOURCES);
 
+  const updateListing = () => {
+    refetch();
+  };
+  
   if (latestRessourceCreated) refetch();
   if (loadingRessources) return <Loading />;
   if (errorRessources) return <Typography>ERROR</Typography>;
 
   return (
-    <Grid
-      container
-      rowSpacing={3}
-      columnSpacing={{ xs: 0, sm: 2, md: 1 }}
-      justifyContent="center"
-      data-testid="ressources"
-    >
-      {ressources?.getAllRessources.map((ressource: RessourceType) => (
-        <RessourceCard {...ressource} key={ressource.id} />
-      ))}
-    </Grid>
+    <Container>
+      <Grid
+        sx={{ mt: 2 }}
+        container
+        rowSpacing={3}
+        alignItems="start"
+        flexWrap= "wrap"
+        columnSpacing={{ xs: 1, sm: 2, md: 10 }}
+      >
+        {ressources?.getAllRessources.map((ressource: RessourceType) => (
+          <RessourceCard {...ressource} updateListing={updateListing} key={ressource.id} />
+        ))}
+      </Grid>
+    </Container>
   );
 }
 
