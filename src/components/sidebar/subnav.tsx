@@ -38,7 +38,7 @@ const Subnav = (): JSX.Element => {
       <Collapse in={openSubnav} timeout="auto" unmountOnExit>
         <List>
           <NavLink
-            to="/cours"            
+            to="/cours"
             onClick={handleActiveLink}
             className={({ isActive }: any) => (isActive ? "active" : "")}
           >

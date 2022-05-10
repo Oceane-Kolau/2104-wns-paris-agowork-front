@@ -9,9 +9,7 @@ const NeedHelpButton = (): JSX.Element => {
   const [needHelp, setSetNeedHelp] = useState(false);
 
   const [userNeedHelp] = useMutation(UPDATE_HELP, {
-    onCompleted: (data) => {
-      console.log(data);
-    },
+    onCompleted: () => {},
   });
 
   const updateNeedHelp = (e: any) => {

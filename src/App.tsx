@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { useTheme, ThemeProvider } from "@mui/material/styles";
-import Router from "./routing/router";
-import AuthProvider from "./context/authContext";
+import Page from "./routing/page";
+import AuthProvider from "./utils/context/authContext";
 
 function App(): JSX.Element {
   const theme = useTheme();
@@ -12,7 +12,7 @@ function App(): JSX.Element {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <BrowserRouter>
-          <Router />
+          <Page />
         </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
