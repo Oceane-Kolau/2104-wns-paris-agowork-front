@@ -15,7 +15,7 @@ import { CardTitle, Paragraph } from "../../assets/styles/list/list";
 const RessourceCard = ({ ...ressource }: any): JSX.Element => {
   return (
     <Grid item xs={10} sm={6} md={4} lg={3} xl={3}>
-        <Card sx={{ maxWidth: 400 }}>
+        <Card sx={{ maxWidth: 400 }} data-testid="ressource">
           <CardContent>
             <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
               {ressource.tags?.map((tag: string) => (

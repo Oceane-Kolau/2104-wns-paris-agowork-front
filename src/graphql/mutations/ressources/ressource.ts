@@ -18,3 +18,18 @@ export const DELETE_RESSOURCE = gql`
     }
   }
 `;
+
+export const UPDATE_RESSOURCE = gql`
+  mutation UpdateRessource($input: RessourceInput!) {
+    updateRessource(input: $input) {
+      id
+      updatedAt
+      title
+      link
+      author
+      description
+      tags
+    }
+  }
+`;
+

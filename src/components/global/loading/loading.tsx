@@ -3,7 +3,7 @@ import { Spinner, LoadingContainer } from "../../../assets/styles/loading";
 
 const Loading = (): JSX.Element => {
   return (
-    <LoadingContainer>
+    <LoadingContainer data-testid="loading">
       <Spinner />
     </LoadingContainer>
   );

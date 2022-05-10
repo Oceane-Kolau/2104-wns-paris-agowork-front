@@ -17,7 +17,6 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
   if (latestRessourceCreated) refetch();
   if (loadingRessources) return <Loading />;
   if (errorRessources) return <Typography>ERROR</Typography>;
-  console.log(ressources)
 
   return (
     <Grid
@@ -25,6 +24,7 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
       rowSpacing={3}
       columnSpacing={{ xs: 0, sm: 2, md: 1 }}
       justifyContent="center"
+      data-testid="ressources"
     >
       {ressources?.getAllRessources.map((ressource: RessourceType) => (
         <RessourceCard {...ressource} key={ressource.id} />
