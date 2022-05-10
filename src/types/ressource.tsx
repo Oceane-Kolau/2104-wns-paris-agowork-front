@@ -22,3 +22,8 @@ export type RessourceCreationValues = {
 export type Tags = {
   tags: [string]
 }
+
+export type CaptionRessourceCard = {
+  updatedAt: Date;
+  author: string
+}

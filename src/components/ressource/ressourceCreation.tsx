@@ -12,33 +12,36 @@ import InputText from "../global/form/inputText";
 import SolidButton from "../global/buttons/solidButton";
 import ErrorPopup from "../global/error/errorPopup";
 
-function RessourceCreation({ handleRefreshRessource }: any): JSX.Element {
+export default function RessourceCreation({ handleRefreshRessource }: any): JSX.Element {
   const [latestRessource, setLatestRessource] = useState<RessourceType>();
   const { register, handleSubmit, reset } = useForm<RessourceCreationValues>();
   const [errorMessage, setErrorMessage] = useState("");
-  const [createRessource, { loading }] = useMutation(CREATE_RESSOURCE, {
-    onCompleted: (data) => {
-      setLatestRessource(data.createRessource);
-      handleRefreshRessource();
+  const [createRessource, { loading: loadingCreationRessource }] = useMutation(
+    CREATE_RESSOURCE,
+    {
+      onCompleted: (data) => {
+        setLatestRessource(data.createRessource);
+        handleRefreshRessource();
+      },
+      onError: (errorCreationRessource) => {
+        errorCreationRessource.graphQLErrors.map(({ message }) =>
+          setErrorMessage(message),
+        );
+      },
     },
-    onError: (error) => {
-      error.graphQLErrors.map(
-        ({ message }) => setErrorMessage(message)
-      );
-    },
-  });
+  );
 
   const handleRessource: SubmitHandler<RessourceCreationValues> = (input) => {
     /* eslint no-param-reassign: "error" */
     if (input.tags) {
       input.tags = (input.tags as string).trim().split(",");
     }
-    console.log(input)
+    console.log(input);
     createRessource({ variables: { input } });
     reset();
   };
 
-  if (loading) return <Loading />;
+  if (loadingCreationRessource) return <Loading />;
   if (errorMessage) return <ErrorPopup errorMessage={errorMessage} />;
 
   return (
@@ -79,17 +82,15 @@ function RessourceCreation({ handleRefreshRessource }: any): JSX.Element {
         </Card>
       </Grid>
       {latestRessource ? (
-        <Grid item xs={12} sm={9} md={6} lg={5} xl={5}>
+        <>
           <LatestCreatedTitle>
             👉&nbsp;&nbsp;Nouvelle Ressource
           </LatestCreatedTitle>
           <RessourceCard {...latestRessource} key={latestRessource.id} />
-        </Grid>
+        </>
       ) : (
         <></>
       )}
     </Grid>
   );
 }
-
-export default RessourceCreation;

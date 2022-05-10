@@ -1,32 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardContent } from "@mui/material";
-import { Delete, LocalPhone, Map } from "@mui/icons-material";
+import { LocalPhone, Map } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
 import {
   BoxIcon,
   CardTitle,
   CardList,
-  BtnDelete,
-  ActionsCard,
   IconParagraph,
 } from "../../assets/styles/list/list";
-import ConfirmationModal from "../global/modal/confirmationModal";
+import ActionsCard from "../global/actionsCard";
 import { DELETE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 
 const CampusCard = ({ updateListing, ...campus }: any): JSX.Element => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   const [deleteCampus] = useMutation(DELETE_CAMPUS, {
     onCompleted: () => {
-      setOpen(false);
       updateListing();
     },
     onError: () => {},
   });
-  const handleDelete = (e: any) => {
-    e.preventDefault();
+  const handleDeleteCampus = () => {
     deleteCampus({
       variables: {
         id: campus.id,
@@ -61,16 +53,11 @@ const CampusCard = ({ updateListing, ...campus }: any): JSX.Element => {
             <></>
           )}
         </CardContent>
-        <ActionsCard disableSpacing>
-          <BtnDelete onClick={handleOpen}>
-            <Delete />
-          </BtnDelete>
-        </ActionsCard>
-        <ConfirmationModal
-          open={open}
-          handleClose={handleClose}
-          handleDelete={handleDelete}
-        />
+        {campus.name === "Paris" ? (
+          <></>
+        ) : (
+          <ActionsCard handleDeleteEl={handleDeleteCampus} />
+        )}
       </CardList>
     </>
   );

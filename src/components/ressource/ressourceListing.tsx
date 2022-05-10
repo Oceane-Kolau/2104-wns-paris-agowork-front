@@ -17,26 +17,28 @@ function RessourceListing({ latestRessourceCreated }: any): JSX.Element {
   const updateListing = () => {
     refetch();
   };
-  
+
   if (latestRessourceCreated) refetch();
   if (loadingRessources) return <Loading />;
   if (errorRessources) return <Typography>ERROR</Typography>;
 
   return (
-    <Container>
-      <Grid
-        sx={{ mt: 2 }}
-        container
-        rowSpacing={3}
-        alignItems="start"
-        flexWrap= "wrap"
-        columnSpacing={{ xs: 1, sm: 2, md: 10 }}
-      >
-        {ressources?.getAllRessources.map((ressource: RessourceType) => (
-          <RessourceCard {...ressource} updateListing={updateListing} key={ressource.id} />
-        ))}
-      </Grid>
-    </Container>
+    <Grid
+      sx={{ mt: 2 }}
+      container
+      rowSpacing={3}
+      alignItems="start"
+      flexWrap="wrap"
+      columnSpacing={{ xs: 1, sm: 2, md: 10 }}
+    >
+      {ressources?.getAllRessources.map((ressource: RessourceType) => (
+        <RessourceCard
+          {...ressource}
+          updateListing={updateListing}
+          key={ressource.id}
+        />
+      ))}
+    </Grid>
   );
 }
 

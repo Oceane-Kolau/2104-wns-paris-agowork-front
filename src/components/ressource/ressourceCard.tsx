@@ -1,36 +1,28 @@
 import React, { useState, useContext } from "react";
 import { useMutation } from "@apollo/client";
 import {
-  Box,
   Button,
   Card,
   CardContent,
   Grid,
-  Typography,
 } from "@mui/material";
-import { formatTimestamp } from "../../utils/dateFormat";
 import { CardTitle, Paragraph } from "../../assets/styles/list/list";
 import RessourceTag from "./ressourceTag";
 import ActionsCard from "../global/actionsCard";
 import { DELETE_RESSOURCE } from "../../graphql/mutations/ressources/ressource";
-import ConfirmationModal from "../global/modal/confirmationModal";
 import { AuthContext } from "../../utils/context/authContext";
+import RessourceCaption from "./ressourceCaption";
 
 const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
   const { user } = useContext(AuthContext);
-  const [open, setOpen] = useState(false);
-  const handleOpenModal = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   const [deleteRessource] = useMutation(DELETE_RESSOURCE, {
     onCompleted: () => {
-      setOpen(false);
       updateListing();
     },
     onError: () => {},
   });
-  const handleDelete = (e: any) => {
-    e.preventDefault();
+  const handleDeleteEl = () => {
     deleteRessource({
       variables: {
         id: ressource.id,
@@ -56,30 +48,13 @@ const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
           ) : (
             <></>
           )}
-          <Box textAlign="end">
-            <Typography
-              variant="caption"
-              style={{ display: "inline-block", whiteSpace: "pre-line" }}
-            >
-              {ressource.author}
-            </Typography>
-            <Typography
-              variant="caption"
-              style={{ display: "inline-block", whiteSpace: "pre-line" }}
-            >
-              {formatTimestamp(ressource.updatedAt)}
-            </Typography>
-          </Box>
+          <RessourceCaption
+            author={ressource.author}
+            updatedAt={ressource.updatedAt as Date}
+          />
         </CardContent>
         {user!.role === "TEACHER" || user!.role === "ADMIN" ? (
-          <>
-            <ActionsCard handleOpenModal={handleOpenModal} />
-            <ConfirmationModal
-              open={open}
-              handleClose={handleClose}
-              handleDelete={handleDelete}
-            />
-          </>
+          <ActionsCard handleDeleteEl={handleDeleteEl} />
         ) : (
           <></>
         )}
