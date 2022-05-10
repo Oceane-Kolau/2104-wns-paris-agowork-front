@@ -38,3 +38,14 @@ export const roles = [
     name: "ADMIN",
   },
 ];
+
+export type UserUpdateValues = {
+  id: string;
+  firstname: string;
+  lastname: string;
+  town: string;
+  password: string;
+  email: string;
+  role: string;
+  campus: string;
+};

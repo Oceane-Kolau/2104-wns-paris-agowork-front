@@ -18,7 +18,7 @@ const ProfileForm = ({
       </Grid>
       <Grid item xs={12} sm={12} md={10}>
         <FormBox>
-          {typeText === "false" ? (
+          {typeText === "password" ? (
             <InputPassword
               register={register}
               mandatory="false"

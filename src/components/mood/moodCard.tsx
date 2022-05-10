@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardContent } from "@mui/material";
 import { useMutation } from "@apollo/client";
-import {
-  CardList,
-  CardTitle,
-  MoodIcon,
-} from "../../assets/styles/list/list";
+import { CardList, CardTitle, MoodIcon } from "../../assets/styles/list/list";
 import ActionsCard from "../global/actionsCard";
 import { DELETE_MOOD } from "../../graphql/mutations/social/mood";
+import UpdateModal from "../global/modal/updateModal";
+import MoodCreation from "./moodCreation";
 
 const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const handleOpenUpdateModal = () => setOpenUpdateModal(true);
+  const handleCloseUpdateModal = () => setOpenUpdateModal(false);
+  const handleUpdate = () => {
+    setOpenUpdateModal(false);
+  };
+
   const [deleteMood] = useMutation(DELETE_MOOD, {
     onCompleted: () => {
       updateListing();
@@ -34,7 +39,17 @@ const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
           <></>
         ) : (
           <>
-            <ActionsCard handleDeleteEl={handleDeleteMood}/>    
+            <ActionsCard
+              handleDeleteEl={handleDeleteMood}
+              handleOpenUpdateModal={handleOpenUpdateModal}
+            />
+            <UpdateModal
+              open={openUpdateModal}
+              handleCloseUpdateModal={handleCloseUpdateModal}
+              handleUpdate={handleUpdate}
+            >
+              <MoodCreation currentMood={mood} />
+            </UpdateModal>
           </>
         )}
       </CardList>

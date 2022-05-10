@@ -5,9 +5,10 @@ import InputSelect from "../global/form/inputSelect";
 import InputText from "../global/form/inputText";
 import { moods } from "./mood.enum";
 
-export default function MoodPersonnalizedIcon({
+export default function MoodForm({
   register,
   control,
+  currentMoodName,
 }: any): JSX.Element {
   const [personalizedIcon, setPersonalizedIcon] = useState<boolean>(false);
   const handlePersonalizedIcon = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +18,13 @@ export default function MoodPersonnalizedIcon({
   return (
     <>
       <BoxIcon>
-        <InputText label="name" type="text" register={register} required />
+        <InputText
+          label="name"
+          type="text"
+          register={register}
+          value={currentMoodName}
+          required
+        />
         {!personalizedIcon ? (
           <InputSelect
             id="icon-select"
@@ -33,7 +40,7 @@ export default function MoodPersonnalizedIcon({
             ))}
           </InputSelect>
         ) : (
-          <InputText label="icon" type="text" register={register} />
+          <InputText label="icon" type="text" register={register} required />
         )}
       </BoxIcon>
       <Typography sx={{ marginTop: 2 }}>

@@ -1,6 +1,6 @@
+import React from "react";
 import { Report } from "@mui/icons-material";
 import { Modal, Typography } from "@mui/material";
-import React from "react";
 import {
   BorderedButton,
   ColoredButton,

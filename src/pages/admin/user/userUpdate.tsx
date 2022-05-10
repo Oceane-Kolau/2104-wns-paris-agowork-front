@@ -13,18 +13,7 @@ import InputSelect from "../../../components/global/form/inputSelect";
 import { CardTitle } from "../../../assets/styles/list/list";
 import { GET_ONE_USER } from "../../../graphql/queries/user/user";
 import ProfileForm from "../../../components/global/form/profileForm";
-import { roles } from "../../../types/user";
-
-export type UserUpdateValues = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  town: string;
-  password: string;
-  email: string;
-  role: string;
-  campus: string;
-};
+import { roles, UserUpdateValues } from "../../../types/user";
 
 export default function UserUpdate(): JSX.Element {
   const { id } = useParams();
@@ -108,7 +97,7 @@ export default function UserUpdate(): JSX.Element {
                     />
                     <ProfileForm
                       title="Mot de passe"
-                      typeText="false"
+                      typeText="password"
                       label="password"
                       register={register}
                     />

@@ -8,7 +8,8 @@ export type GetMoodsType = {
   getMoods: MoodType[];
 };
 
-export type MoodCreationValues = {
+export type MoodValues = {
+  id?: string;
   name: string;
   icon: string;
 };
