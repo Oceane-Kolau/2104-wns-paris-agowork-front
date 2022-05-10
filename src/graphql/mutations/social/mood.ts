@@ -20,6 +20,16 @@ export const CREATE_MOOD = gql`
   }
 `;
 
+export const UPDATE_MOOD = gql`
+  mutation updateMood($input: MoodInput!) {
+    updateMood(input: $input) {
+      id
+      name
+      icon
+    }
+  }
+`;
+
 export const UPDATE_USER_MOOD = gql`
   mutation updateUserMood($id: ID!, $email: String!) {
     updateUserMood(id: $id, email: $email) {

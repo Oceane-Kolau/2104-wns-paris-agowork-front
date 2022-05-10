@@ -9,22 +9,12 @@ import {
 import { GET_STUDENTS_MOOD } from "../../../graphql/queries/user/user";
 import { ProfileAvatar } from "../../../assets/styles/sidebar/sidebar";
 import TeamMood from "./teamMood";
-
-type UserMoodType = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  picture: string;
-  mood?: any;
-};
-
-type GetUsersMoodType = {
-  getAllStudentsByMood: UserMoodType[];
-};
+import { GetUsersMoodType, UserMoodType } from "../../../types/mood";
 
 export default function MoodBoard(): JSX.Element {
-  const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
+  const { data, error, loading } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
 
+  console.log(error)
   return (
     <CampusMoods>
       {data?.getAllStudentsByMood.map((user: UserMoodType) => (

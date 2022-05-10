@@ -6,7 +6,10 @@ let theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#004e92",
+      main: "#154e8f",
+    },
+    background: {
+      default: "#fffff"
     },
   },
   shape: {

@@ -8,3 +8,9 @@ export type CampusType = {
 export type GetCampusType = {
   getCampus: CampusType[];
 };
+
+export type CampusCreationValues = {
+  name: string;
+  address: string;
+  phone: string;
+};

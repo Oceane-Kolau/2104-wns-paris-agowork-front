@@ -22,9 +22,11 @@ if (process.env.NODE_ENV !== "production") {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
+    // eslint-disable-next-line no-console
     console.log("graphQLErrors", graphQLErrors);
   }
   if (networkError) {
+    // eslint-disable-next-line no-console
     console.log("networkError", networkError);
   }
 });

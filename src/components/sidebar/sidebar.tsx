@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate, useLocation, To } from "react-router-dom";
+import { useNavigate, To } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
   CssBaseline,
@@ -26,16 +26,11 @@ import {
   ColoredSvg,
   BurgerButton,
 } from "../../assets/styles/sidebar/sidebar";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../utils/context/authContext";
 import NeedHelpButton from "./needHelpButton";
-
-interface State {
-  to: To;
-}
 
 const Sidebar = (): JSX.Element => {
   const { user } = useContext(AuthContext);
-  const state = useLocation().state as State;
   const navigate = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -83,9 +78,9 @@ const Sidebar = (): JSX.Element => {
           <Elements
             text="Ressources"
             icon={<SchoolOutlined />}
-            path="/mes-ressources"
+            path="/ressources"
           />
-          {user?.role === "ADMIN" || user?.role === "SUPERADMIN" ? (
+          {user?.role === "ADMIN" ? (
             <Elements
               text="Administration"
               icon={<AdminPanelSettings />}

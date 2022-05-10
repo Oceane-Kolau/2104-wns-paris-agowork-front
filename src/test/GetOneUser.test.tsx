@@ -1,8 +1,9 @@
 import React from "react";
 import { MockedProvider } from "@apollo/client/testing";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { GET_ONE_USER } from "../graphql/queries/user/user";
 import UserUpdate from "../pages/admin/user/userUpdate";
+
 const mocks = [
   {
     request: {
@@ -13,7 +14,7 @@ const mocks = [
     },
     result: {
       data: {
-        getUserById : {
+        getUserById: {
           id: "1",
           firstname: "firstname1",
           lastname: "lastname1",
@@ -25,7 +26,7 @@ const mocks = [
             name: "Paris",
             id: "2",
           },
-        }
+        },
       },
     },
   },
@@ -43,13 +44,19 @@ it("render the user", async () => {
   render(
     <MockedProvider mocks={mocks} addTypename={false}>
       <UserUpdate />
-    </MockedProvider>,
+    </MockedProvider>
   );
 
-  const firstnameInput = await waitFor(() => screen.getByDisplayValue('firstname1'));
-  const lastnameInput = await waitFor(() => screen.getByDisplayValue('lastname1'));
-  const emailInput = await waitFor(() => screen.getByDisplayValue('email1@gmail.com'));
-  const townInput = await waitFor(() => screen.getByDisplayValue('Cannes'));
+  const firstnameInput = await waitFor(() =>
+    screen.getByDisplayValue("firstname1")
+  );
+  const lastnameInput = await waitFor(() =>
+    screen.getByDisplayValue("lastname1")
+  );
+  const emailInput = await waitFor(() =>
+    screen.getByDisplayValue("email1@gmail.com")
+  );
+  const townInput = await waitFor(() => screen.getByDisplayValue("Cannes"));
   expect(firstnameInput).toHaveValue("firstname1");
   expect(lastnameInput).toHaveValue("lastname1");
   expect(emailInput).toHaveValue("email1@gmail.com");
