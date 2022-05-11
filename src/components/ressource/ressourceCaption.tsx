@@ -13,7 +13,7 @@ const RessourceCaption = ({
         variant="caption"
         style={{ display: "inline-block", whiteSpace: "pre-line" }}
       >
-        {author}
+        {author},
       </Typography>
       <Typography
         variant="caption"

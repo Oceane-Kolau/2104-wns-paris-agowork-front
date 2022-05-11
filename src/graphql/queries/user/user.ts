@@ -40,6 +40,7 @@ export const GET_LOGGED_USER = gql`
     getLoggedUserByEmail {
       firstname
       lastname
+      needHelp
       id
       campus {
         name
