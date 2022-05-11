@@ -13,15 +13,11 @@ const UpdateModal = ({
       open={open}
       onClose={handleCloseUpdateModal}
       aria-labelledby="modal-update-title"
-      fullWidth={true}
-      maxWidth={"xl"}
+      maxWidth="xl"
     >
-      <AppBar sx={{ position: "relative", color:"#ffff" }}>
+      <AppBar sx={{ position: "relative", color: "#ffff" }}>
         <TopBar>
-          <IconButton
-            onClick={handleCloseUpdateModal}
-            aria-label="close"
-          >
+          <IconButton onClick={handleCloseUpdateModal} aria-label="close">
             <Close />
           </IconButton>
         </TopBar>

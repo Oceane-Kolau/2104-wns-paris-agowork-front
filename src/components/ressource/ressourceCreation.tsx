@@ -12,7 +12,9 @@ import InputText from "../global/form/inputText";
 import SolidButton from "../global/buttons/solidButton";
 import ErrorPopup from "../global/error/errorPopup";
 
-export default function RessourceCreation({ handleRefreshRessource }: any): JSX.Element {
+export default function RessourceCreation({
+  handleRefreshRessource,
+}: any): JSX.Element {
   const [latestRessource, setLatestRessource] = useState<RessourceType>();
   const { register, handleSubmit, reset } = useForm<RessourceCreationValues>();
   const [errorMessage, setErrorMessage] = useState("");
@@ -25,10 +27,10 @@ export default function RessourceCreation({ handleRefreshRessource }: any): JSX.
       },
       onError: (errorCreationRessource) => {
         errorCreationRessource.graphQLErrors.map(({ message }) =>
-          setErrorMessage(message),
+          setErrorMessage(message)
         );
       },
-    },
+    }
   );
 
   const handleRessource: SubmitHandler<RessourceCreationValues> = (input) => {

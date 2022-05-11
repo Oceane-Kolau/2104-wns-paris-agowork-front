@@ -3,7 +3,10 @@ import { Box, Typography } from "@mui/material";
 import { formatTimestamp } from "../../utils/dateFormat";
 import { CaptionRessourceCard } from "../../types/ressource";
 
-const RessourceCaption = ({author, updatedAt} : CaptionRessourceCard): JSX.Element => {
+const RessourceCaption = ({
+  author,
+  updatedAt,
+}: CaptionRessourceCard): JSX.Element => {
   return (
     <Box textAlign="end">
       <Typography

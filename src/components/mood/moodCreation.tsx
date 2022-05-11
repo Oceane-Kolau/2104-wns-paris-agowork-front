@@ -18,16 +18,16 @@ export default function MoodCreation({
 }: any): JSX.Element {
   const [latestMood, setLatestMood] = useState<MoodType>();
   const [errorMessage, setErrorMessage] = useState("");
+  const { register, handleSubmit, control, reset } = useForm<MoodValues>();
 
   const [updateMood] = useMutation(UPDATE_MOOD, {
     onCompleted: (data) => {
-      console.log("data", data);
       setLatestMood(data.updateMood);
       handleRefreshMood();
     },
     onError: (errorUpdateMood) => {
       errorUpdateMood.graphQLErrors.map(({ message }) =>
-        setErrorMessage(message),
+        setErrorMessage(message)
       );
     },
   });
@@ -41,28 +41,24 @@ export default function MoodCreation({
       },
       onError: (errorCreationMood) => {
         errorCreationMood.graphQLErrors.map(({ message }) =>
-          setErrorMessage(message),
+          setErrorMessage(message)
         );
       },
-    },
+    }
   );
 
-  if (currentMood) {
-    useEffect(() => {
-      let defaultValues = {
-        id: currentMood.id,
-        name: "",
-        icon: "",
-      };
-      defaultValues.name = currentMood.name;
-      defaultValues.icon = currentMood.icon;
-      reset({ ...defaultValues });
-    }, []);
-  }
+  // useEffect(() => {
+  //   const defaultValues = {
+  //     id: currentMood.id,
+  //     name: "",
+  //     icon: "",
+  //   };
+  //   defaultValues.name = currentMood.name;
+  //   defaultValues.icon = currentMood.icon;
+  //   reset({ ...defaultValues });
+  // }, []);  // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  const { register, handleSubmit, control, reset } = useForm<MoodValues>();
   const handleMood: SubmitHandler<MoodValues> = (input) => {
-    console.log(input);
     if (currentMood) {
       updateMood({
         variables: {

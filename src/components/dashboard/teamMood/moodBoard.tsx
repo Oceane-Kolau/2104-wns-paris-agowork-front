@@ -12,9 +12,8 @@ import TeamMood from "./teamMood";
 import { GetUsersMoodType, UserMoodType } from "../../../types/mood";
 
 export default function MoodBoard(): JSX.Element {
-  const { data, error, loading } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
+  const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);
 
-  console.log(error)
   return (
     <CampusMoods>
       {data?.getAllStudentsByMood.map((user: UserMoodType) => (

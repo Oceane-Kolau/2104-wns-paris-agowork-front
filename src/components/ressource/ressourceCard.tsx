@@ -1,11 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useMutation } from "@apollo/client";
-import {
-  Button,
-  Card,
-  CardContent,
-  Grid,
-} from "@mui/material";
+import { Button, Card, CardContent, Grid } from "@mui/material";
 import { CardTitle, Paragraph } from "../../assets/styles/list/list";
 import RessourceTag from "./ressourceTag";
 import ActionsCard from "../global/actionsCard";
@@ -53,7 +48,7 @@ const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
             updatedAt={ressource.updatedAt as Date}
           />
         </CardContent>
-        { user && (user?.role === "TEACHER" || user?.role === "ADMIN") ? (
+        {user && (user?.role === "TEACHER" || user?.role === "ADMIN") ? (
           <ActionsCard handleDeleteEl={handleDeleteEl} />
         ) : (
           <></>

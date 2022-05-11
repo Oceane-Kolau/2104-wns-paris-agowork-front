@@ -20,10 +20,10 @@ export type RessourceCreationValues = {
 };
 
 export type Tags = {
-  tags: [string]
-}
+  tags: [string];
+};
 
 export type CaptionRessourceCard = {
   updatedAt: Date;
-  author: string
-}
+  author: string;
+};
