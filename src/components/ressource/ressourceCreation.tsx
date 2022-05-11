@@ -38,7 +38,6 @@ export default function RessourceCreation({
     if (input.tags) {
       input.tags = (input.tags as string).trim().split(",");
     }
-    console.log(input);
     createRessource({ variables: { input } });
     reset();
   };
