@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardContent } from "@mui/material";
 import { LocalPhone, Map } from "@mui/icons-material";
 import { useMutation } from "@apollo/client";
@@ -10,8 +10,16 @@ import {
 } from "../../assets/styles/list/list";
 import ActionsCard from "../global/actionsCard";
 import { DELETE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
+import CampusUpdate from "./campusUpdate";
 
 const CampusCard = ({ updateListing, ...campus }: any): JSX.Element => {
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const handleOpenUpdateModal = () => setOpenUpdateModal(true);
+  const handleCloseUpdateModal = () => setOpenUpdateModal(false);
+  const handleUpdate = () => {
+    setOpenUpdateModal(false);
+  };
+
   const [deleteCampus] = useMutation(DELETE_CAMPUS, {
     onCompleted: () => {
       updateListing();
@@ -56,7 +64,19 @@ const CampusCard = ({ updateListing, ...campus }: any): JSX.Element => {
         {campus.name === "Paris" ? (
           <></>
         ) : (
-          <ActionsCard handleDeleteEl={handleDeleteCampus} />
+          <>
+            <ActionsCard
+              handleDeleteEl={handleDeleteCampus}
+              handleOpenUpdateModal={handleOpenUpdateModal}
+            />
+            <CampusUpdate
+              open={openUpdateModal}
+              handleCloseUpdateModal={handleCloseUpdateModal}
+              handleUpdate={handleUpdate}
+              currentCampus={campus}
+              handleRefreshCampus={updateListing}
+            />
+          </>
         )}
       </CardList>
     </>

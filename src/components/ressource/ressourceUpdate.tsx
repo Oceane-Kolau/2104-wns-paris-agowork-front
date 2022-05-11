@@ -3,7 +3,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import { UPDATE_MOOD } from "../../graphql/mutations/social/mood";
 import { Form } from "../../assets/styles/form";
 import { TopBar } from "../../assets/styles/sidebar/sidebar";
 import SolidButton from "../global/buttons/solidButton";
@@ -54,8 +53,7 @@ export default function Ressourceupdate({
     reset({ ...defaultValues });
   }, [currentRessource, reset]);
 
-  const handleMood: SubmitHandler<RessourceValues> = (input) => {
-    console.log(input);
+  const handleRessource: SubmitHandler<RessourceValues> = (input) => {
     if (input.tags) {
       input.tags = (input.tags as string).trim().split(",");
     }
@@ -81,13 +79,13 @@ export default function Ressourceupdate({
         </TopBar>
       </ModalBar>
       <DialogContent>
-        <FormTitle>Modifier ce mood</FormTitle>
-        <Form onSubmit={handleSubmit(handleMood)}>
+        <FormTitle>Modifier cette ressource</FormTitle>
+        <Form onSubmit={handleSubmit(handleRessource)}>
           <RessourceForm
             register={register}
             currentRessource={currentRessource}
           />
-          <SolidButton type="submit" textButton="Modifier ce mood" />
+          <SolidButton type="submit" textButton="Modifier cette ressource" />
         </Form>
       </DialogContent>
     </Dialog>

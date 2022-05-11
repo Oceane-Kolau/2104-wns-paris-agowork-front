@@ -7,14 +7,15 @@ import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { CardForm, Form, FormBox } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
-import { CampusCreationValues, CampusType } from "../../types/campus";
+import { CampusType } from "../../types/campus";
 import CampusCard from "./campusCard";
+import CampusForm from "./campusForm";
 
 export default function CampusCreation({
   handleRefreshCampus,
 }: any): JSX.Element {
   const [latestCampus, setLatestCampus] = useState<CampusType>();
-  const { register, handleSubmit, reset } = useForm<CampusCreationValues>();
+  const { register, handleSubmit, reset } = useForm<CampusType>();
 
   const [createCampus] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
@@ -24,7 +25,7 @@ export default function CampusCreation({
     onError: () => {},
   });
 
-  const handleCampus: SubmitHandler<CampusCreationValues> = (input) => {
+  const handleCampus: SubmitHandler<CampusType> = (input) => {
     createCampus({ variables: { input } });
     reset();
   };
@@ -35,9 +36,7 @@ export default function CampusCreation({
         <CardForm>
           <FormTitle>Ajouter un campus</FormTitle>
           <Form onSubmit={handleSubmit(handleCampus)}>
-            <InputText label="name" type="text" register={register} required />
-            <InputText label="phone" type="text" register={register} required />
-            <InputText label="address" type="text" register={register} false />
+            <CampusForm register={register} />
             <SolidButton type="submit" textButton="Ajouter ce campus" />
           </Form>
         </CardForm>

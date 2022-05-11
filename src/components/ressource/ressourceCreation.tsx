@@ -8,7 +8,6 @@ import RessourceCard from "./ressourceCard";
 import Loading from "../global/loading/loading";
 import { Form } from "../../assets/styles/form";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
-import InputText from "../global/form/inputText";
 import SolidButton from "../global/buttons/solidButton";
 import ErrorPopup from "../global/error/errorPopup";
 import RessourceForm from "./ressourceForm";
