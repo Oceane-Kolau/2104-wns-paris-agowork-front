@@ -12,8 +12,8 @@ export const CREATE_CAMPUS = gql`
 `;
 
 export const UPDATE_CAMPUS = gql`
-  mutation createCampus($input: CampusInput!) {
-    createCampus(input: $input) {
+  mutation updateCampus($input: CampusInput!) {
+    updateCampus(input: $input) {
       id
       name
       address
