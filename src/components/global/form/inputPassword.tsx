@@ -11,7 +11,7 @@ import { GroupForm } from "../../../assets/styles/form";
 
 export default function InputPassword({
   label,
-  mandatory,
+  required,
   register,
 }: any): JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,18 +27,18 @@ export default function InputPassword({
     <GroupForm>
       <FormControl variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">
-          {!label ? "password *" : label}
+          {required ? "password *" : label}
         </InputLabel>
         <OutlinedInput
-          {...(mandatory === "false" ? "" : "required")}
           id="outlined-adornment-password"
           label="Password"
           type={showPassword ? "text" : "password"}
-          {...register("password")}
+          {...register(label,{required})}
+          autoComplete="off"
           endAdornment={
             <InputAdornment position="end">
               <IconButton
-                aria-label="toggle password visibility"
+                aria-label="toggle-password-visibility"
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"

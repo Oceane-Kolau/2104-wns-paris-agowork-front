@@ -11,7 +11,7 @@ import {
 import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../global/buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
-import { GetMoodsType } from "../../../types/mood";
+import { GetMoodsType, MoodType } from "../../../types/mood";
 import InputSelect from "../../global/form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
@@ -39,6 +39,7 @@ export default function MoodCard(): JSX.Element {
   });
 
   const handleMood: SubmitHandler<MoodValues> = (input) => {
+    console.log(input)
     updateUserMood({
       variables: {
         id: input.id,
@@ -69,9 +70,9 @@ export default function MoodCard(): JSX.Element {
             label="Liste des moods"
             control={control}
           >
-            {allMoods?.getMoods.map((list: any) => (
-              <MenuItem key={list.id} value={list.id}>
-                {list.icon} {list.name}
+            {allMoods?.getMoods.map((mood: MoodType) => (
+              <MenuItem key={mood.id} value={mood.id}>
+                {mood.icon} {mood.name}
               </MenuItem>
             ))}
           </InputSelect>

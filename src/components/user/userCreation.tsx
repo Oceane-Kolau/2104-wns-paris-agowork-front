@@ -9,7 +9,7 @@ import { CampusType, GetCampusType } from "../../types/campus";
 import SolidButton from "../global/buttons/solidButton";
 import InputText from "../global/form/inputText";
 import InputSelect from "../global/form/inputSelect";
-import { roles, UserCreationValues, UserType } from "../../types/user";
+import { Role, roles, UserCreationValues, UserType } from "../../types/user";
 import UserCard from "./userCard";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputPassword from "../global/form/inputPassword";
@@ -58,7 +58,7 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
             </FormBox>
 
             <InputText label="email" type="text" register={register} required />
-            <InputPassword register={register} />
+            <InputPassword register={register} required label="password" />
 
             <FormBox>
               <InputText
@@ -78,9 +78,9 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
                   label="Campus"
                   control={control}
                 >
-                  {allCampus?.getCampus.map((list: CampusType) => (
-                    <MenuItem key={list.id} value={list.id}>
-                      {list.name}
+                  {allCampus?.getCampus.map((campus: CampusType) => (
+                    <MenuItem key={campus.id} value={campus.id}>
+                      {campus.name}
                     </MenuItem>
                   ))}
                 </InputSelect>
@@ -93,9 +93,9 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
               control={control}
               required
             >
-              {roles.map((list: any) => (
-                <MenuItem key={list.name} value={list.name}>
-                  {list.name}
+              {roles.map((role: Role) => (
+                <MenuItem key={role.name} value={role.name}>
+                  {role.name}
                 </MenuItem>
               ))}
             </InputSelect>

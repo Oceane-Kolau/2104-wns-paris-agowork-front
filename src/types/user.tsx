@@ -49,3 +49,7 @@ export type UserUpdateValues = {
   role: string;
   campus: string;
 };
+
+export type Role = {
+  name : string
+}

@@ -6,7 +6,6 @@ import { FormBox } from "../../../assets/styles/form";
 
 const ProfileForm = ({
   title,
-  typeText,
   label,
   value,
   register,
@@ -18,10 +17,9 @@ const ProfileForm = ({
       </Grid>
       <Grid item xs={12} sm={12} md={10}>
         <FormBox>
-          {typeText === "password" ? (
+          {label === "password" ? (
             <InputPassword
               register={register}
-              mandatory="false"
               label={label}
             />
           ) : (
