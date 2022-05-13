@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
 import { Card, CardContent, Grid } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -13,6 +12,7 @@ import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import SolidButton from "../global/buttons/solidButton";
 import ErrorPopup from "../global/error/errorPopup";
 import RessourceForm from "./ressourceForm";
+import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
 
 export default function RessourceCreation({
   handleRefreshRessource,
@@ -35,10 +35,10 @@ export default function RessourceCreation({
       },
       onError: (errorCreationRessource) => {
         errorCreationRessource.graphQLErrors.map(({ message }) =>
-          setErrorMessage(message),
+          setErrorMessage(message)
         );
       },
-    },
+    }
   );
 
   const handleRessource: SubmitHandler<RessourceValues> = (input) => {

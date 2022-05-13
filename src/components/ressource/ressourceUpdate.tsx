@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
-import { useMutation } from "@apollo/client";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
+import { useMutation } from "@apollo/client";
 import { Close } from "@mui/icons-material";
 import { Form } from "../../assets/styles/form";
 import { TopBar } from "../../assets/styles/sidebar/sidebar";
@@ -15,6 +14,7 @@ import { ModalBar } from "../../assets/styles/modal";
 import { RessourceValues } from "../../utils/types/ressource";
 import { UPDATE_RESSOURCE } from "../../graphql/mutations/ressources/ressource";
 import RessourceForm from "./ressourceForm";
+import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
 
 export default function Ressourceupdate({
   handleRefreshRessource,
@@ -23,7 +23,12 @@ export default function Ressourceupdate({
   currentRessource,
 }: any): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<RessourceValues>({resolver: yupResolver(ressourceSchema)});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<RessourceValues>({ resolver: yupResolver(ressourceSchema) });
 
   const [updateRessource, { loading: loadingUpdateRessource }] = useMutation(
     UPDATE_RESSOURCE,
@@ -34,10 +39,10 @@ export default function Ressourceupdate({
       },
       onError: (errorUpdateMood) => {
         errorUpdateMood.graphQLErrors.map(({ message }) =>
-          setErrorMessage(message),
+          setErrorMessage(message)
         );
       },
-    },
+    }
   );
 
   useEffect(() => {
@@ -56,6 +61,7 @@ export default function Ressourceupdate({
   }, [currentRessource, reset]);
 
   const handleRessource: SubmitHandler<RessourceValues> = (input) => {
+    /* eslint-disable no-param-reassign */
     if (input.tags) {
       input.tags = (input.tags as string).trim().split(",");
     }

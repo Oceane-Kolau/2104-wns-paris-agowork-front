@@ -34,7 +34,7 @@ export default function InputPassword({
           id="outlined-adornment-password"
           label="Password"
           type={showPassword ? "text" : "password"}
-          {...register(label,{required})}
+          {...register(label, { required })}
           autoComplete="off"
           endAdornment={
             <InputAdornment position="end">

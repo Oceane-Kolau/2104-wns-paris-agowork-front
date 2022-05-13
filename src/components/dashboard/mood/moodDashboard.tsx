@@ -11,15 +11,10 @@ import {
 import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../global/buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
-import { GetMoodsType, MoodType } from "../../../utils/types/mood";
+import { GetMoodsType, MoodType, MoodValues } from "../../../utils/types/mood";
 import InputSelect from "../../global/form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";
-
-type MoodValues = {
-  id: string;
-  email: string;
-};
 
 export default function MoodCard(): JSX.Element {
   const { user } = useContext(AuthContext);
@@ -39,7 +34,6 @@ export default function MoodCard(): JSX.Element {
   });
 
   const handleMood: SubmitHandler<MoodValues> = (input) => {
-    console.log(input)
     updateUserMood({
       variables: {
         id: input.id,

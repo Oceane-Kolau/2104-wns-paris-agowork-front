@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box } from "@mui/material";
 import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { CardForm, Form, FormBox } from "../../assets/styles/form";
@@ -9,7 +10,6 @@ import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import { CampusType } from "../../utils/types/campus";
 import CampusCard from "./campusCard";
 import CampusForm from "./campusForm";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { campusSchema } from "../../utils/yupSchema/campusValidationSchema";
 
 export default function CampusCreation({

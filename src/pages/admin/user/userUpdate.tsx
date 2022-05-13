@@ -57,10 +57,10 @@ export default function UserUpdate(): JSX.Element {
       },
       onError: (errorUpdateUser) => {
         errorUpdateUser.graphQLErrors.map(({ message }) =>
-          setErrorMessage(message),
+          setErrorMessage(message)
         );
       },
-    },
+    }
   );
 
   const handleUpdateUser: SubmitHandler<UserType> = (input) => {

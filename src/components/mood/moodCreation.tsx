@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Box } from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@apollo/client";
 import { CREATE_MOOD } from "../../graphql/mutations/social/mood";
 import { Form, FormBox, CardForm } from "../../assets/styles/form";
@@ -11,13 +12,18 @@ import MoodCard from "./moodCard";
 import Loading from "../global/loading/loading";
 import ErrorPopup from "../global/error/errorPopup";
 import MoodForm from "./moodForm";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { moodSchema } from "../../utils/yupSchema/moodValidationSchema";
 
 export default function MoodCreation({ handleRefreshMood }: any): JSX.Element {
   const [latestMood, setLatestMood] = useState<MoodType>();
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, control, reset, formState: {errors} } = useForm<MoodValues>({resolver: yupResolver(moodSchema)});
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<MoodValues>({ resolver: yupResolver(moodSchema) });
 
   const [createMood, { loading: loadingCreationMood }] = useMutation(
     CREATE_MOOD,

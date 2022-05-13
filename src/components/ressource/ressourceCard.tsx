@@ -17,7 +17,7 @@ const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
   const handleUpdate = () => {
     setOpenUpdateModal(false);
   };
-  
+
   const [deleteRessource] = useMutation(DELETE_RESSOURCE, {
     onCompleted: () => {
       updateListing();
@@ -31,12 +31,16 @@ const RessourceCard = ({ updateListing, ...ressource }: any): JSX.Element => {
       },
     });
   };
-  
+
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={3}>
       <Card sx={{ maxWidth: 345 }} data-testid="ressource">
         <CardContent>
-          {ressource.tags[0] !== "" ? <RessourceTag tags={ressource.tags} /> : <></>}
+          {ressource.tags[0] !== "" ? (
+            <RessourceTag tags={ressource.tags} />
+          ) : (
+            <></>
+          )}
           <CardTitle>{ressource.title}</CardTitle>
           <Paragraph>{ressource.description}</Paragraph>
           {ressource.link ? (

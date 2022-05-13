@@ -9,12 +9,31 @@ export default function RessourceForm({
 }: any): JSX.Element {
   return (
     <>
-      <InputText label="title" value={currentRessource.title} register={register} required />
+      <InputText
+        label="title"
+        value={currentRessource.title}
+        register={register}
+        required
+      />
       <Typography>{errors.title?.message}</Typography>
-      <InputText label="link" value={currentRessource.link} register={register} required />
+      <InputText
+        label="link"
+        value={currentRessource.link}
+        register={register}
+        required
+      />
       <Typography>{errors.link?.message}</Typography>
-      <InputText label="tags" value={currentRessource?.tags} register={register} />
-      <InputText label="description" value={currentRessource?.description} register={register} multiline />
+      <InputText
+        label="tags"
+        value={currentRessource?.tags}
+        register={register}
+      />
+      <InputText
+        label="description"
+        value={currentRessource?.description}
+        register={register}
+        multiline
+      />
       <Typography>{errors.description?.message}</Typography>
     </>
   );

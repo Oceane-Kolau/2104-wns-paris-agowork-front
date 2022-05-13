@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { UPDATE_MOOD } from "../../graphql/mutations/social/mood";
 import { Form } from "../../assets/styles/form";
 import { TopBar } from "../../assets/styles/sidebar/sidebar";
@@ -13,7 +14,6 @@ import ErrorPopup from "../global/error/errorPopup";
 import MoodForm from "./moodForm";
 import { FormTitle } from "../../assets/styles/list/list";
 import { ModalBar } from "../../assets/styles/modal";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { moodSchema } from "../../utils/yupSchema/moodValidationSchema";
 
 export default function MoodUpdate({
@@ -23,7 +23,13 @@ export default function MoodUpdate({
   currentMood,
 }: any): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, control, reset, formState: {errors} } = useForm<MoodValues>({resolver: yupResolver(moodSchema)});
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<MoodValues>({ resolver: yupResolver(moodSchema) });
 
   const [updateMood, { loading: loadingUpdateMood }] = useMutation(
     UPDATE_MOOD,

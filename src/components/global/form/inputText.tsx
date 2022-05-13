@@ -7,9 +7,8 @@ export default function InputText({
   required = false,
   register,
   multiline,
-  value
+  value,
 }: any): JSX.Element {
-
   return (
     <GroupForm>
       <TextField
