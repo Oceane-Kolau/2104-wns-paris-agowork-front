@@ -118,4 +118,4 @@ export const Snackbar = styled(Stack)`
 export const FormError = styled(Typography)`
   color: #d3302f;
   text-transform: capitalize;
-`
+`;
