@@ -12,7 +12,8 @@ export type GetRessourcesType = {
   getAllRessources: RessourceType[];
 };
 
-export type RessourceCreationValues = {
+export type RessourceValues = {
+  id?: string;
   title: string;
   link: string;
   description?: string;

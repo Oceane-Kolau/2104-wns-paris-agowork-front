@@ -1,8 +1,8 @@
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_RESSOURCES } from "../../graphql/queries/ressource/ressource";
-import { GetRessourcesType, RessourceType } from "../../types/ressource";
+import { GetRessourcesType, RessourceType } from "../../utils/types/ressource";
 import RessourceCard from "./ressourceCard";
 import Loading from "../global/loading/loading";
 

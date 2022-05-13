@@ -4,16 +4,17 @@ import { GroupForm } from "../../../assets/styles/form";
 
 export default function InputText({
   label,
-  required,
+  required = false,
   register,
-  type,
+  multiline,
   value,
 }: any): JSX.Element {
   return (
     <GroupForm>
       <TextField
-        {...register(label, { required })}
-        type={!type ? "text" : type}
+        {...register(label)}
+        type="text"
+        multiline={multiline}
         defaultValue={value}
         required={required}
         label={label}
