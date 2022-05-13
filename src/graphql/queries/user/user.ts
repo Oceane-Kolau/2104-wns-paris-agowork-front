@@ -20,13 +20,14 @@ export const GET_ALL_USERS = gql`
   }
 `;
 
-export const GET_STUDENTS_MOOD = gql`
-  query getAllStudentsByMood {
-    getAllStudentsByMood {
+export const GET_STUDENTS_SOCIAL = gql`
+  query getAllStudentsBySocial {
+    getAllStudentsBySocial {
       id
       firstname
       lastname
       picture
+      needHelp
       mood {
         name
         icon

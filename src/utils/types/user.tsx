@@ -33,3 +33,16 @@ export const roles = [
     name: "ADMIN",
   },
 ];
+
+export type UserSocialType = {
+  id: string;
+  firstname: string;
+  lastname: string;
+  picture: string;
+  mood?: any;
+  needHelp?: boolean;
+};
+
+export type GetUsersSocialType = {
+  getAllStudentsBySocial: UserSocialType[];
+};

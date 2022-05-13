@@ -1,6 +1,7 @@
 import React from "react";
 import { FormHelperText, Typography } from "@mui/material";
 import InputText from "../global/form/inputText";
+import { FormError } from "../../assets/styles/global";
 
 export default function RessourceForm({
   register,
@@ -15,14 +16,14 @@ export default function RessourceForm({
         register={register}
         required
       />
-      <Typography>{errors.title?.message}</Typography>
+      <FormError>{errors.title?.message}</FormError>
       <InputText
         label="link"
         value={currentRessource.link}
         register={register}
         required
       />
-      <Typography>{errors.link?.message}</Typography>
+      <FormError>{errors.link?.message}</FormError>
       <InputText
         label="tags"
         value={currentRessource?.tags}
@@ -37,7 +38,7 @@ export default function RessourceForm({
         register={register}
         multiline
       />
-      <Typography>{errors.description?.message}</Typography>
+      <FormError>{errors.description?.message}</FormError>
     </>
   );
 }

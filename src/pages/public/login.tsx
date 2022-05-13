@@ -22,6 +22,7 @@ import InputText from "../../components/global/form/inputText";
 import InputPassword from "../../components/global/form/inputPassword";
 import { LoginValues } from "../../utils/types/login";
 import { loginSchema } from "../../utils/yupSchema/userValidationSchema";
+import { FormError } from "../../assets/styles/global";
 
 export default function Login(): JSX.Element {
   const navigate = useNavigate();
@@ -71,9 +72,9 @@ export default function Login(): JSX.Element {
           ) : (
             <LoginForm onSubmit={handleSubmit(handleLogin)}>
               <InputText label="email" register={register} required />
-              <Typography>{errors.email?.message}</Typography>
+              <FormError>{errors.email?.message}</FormError>
               <InputPassword register={register} required label="password" />
-              <Typography>{errors.password?.message}</Typography>
+              <FormError>{errors.password?.message}</FormError>
               <SolidButton type="submit" textButton="Connexion" />
             </LoginForm>
           )}

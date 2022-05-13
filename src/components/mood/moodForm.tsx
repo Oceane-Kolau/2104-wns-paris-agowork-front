@@ -4,6 +4,7 @@ import { BoxIcon } from "../../assets/styles/list/list";
 import InputSelect from "../global/form/inputSelect";
 import InputText from "../global/form/inputText";
 import { moods } from "./mood.enum";
+import { FormError } from "../../assets/styles/global";
 
 export default function MoodForm({
   register,
@@ -25,7 +26,7 @@ export default function MoodForm({
           value={currentMoodName}
           required
         />
-        <Typography>{errors.name?.message}</Typography>
+        <FormError>{errors.name?.message}</FormError>
         {!personalizedIcon ? (
           <InputSelect
             id="icon-select"
@@ -43,7 +44,7 @@ export default function MoodForm({
         ) : (
           <InputText label="icon" register={register} required />
         )}
-        <Typography>{errors.icon?.message}</Typography>
+        <FormError>{errors.icon?.message}</FormError>
       </BoxIcon>
       <Typography sx={{ marginTop: 2 }}>
         {!personalizedIcon

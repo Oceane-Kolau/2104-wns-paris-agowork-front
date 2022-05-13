@@ -17,6 +17,7 @@ import { roles, UserType } from "../../../utils/types/user";
 import Loading from "../../../components/global/loading/loading";
 import ErrorPopup from "../../../components/global/error/errorPopup";
 import { userUpdateSchema } from "../../../utils/yupSchema/userValidationSchema";
+import { FormError } from "../../../assets/styles/global";
 
 export default function UserUpdate(): JSX.Element {
   const { id } = useParams();
@@ -83,21 +84,21 @@ export default function UserUpdate(): JSX.Element {
                 label="firstname"
                 register={register}
               />
-              <Typography>{errors.firstname?.message}</Typography>
+              <FormError>{errors.firstname?.message}</FormError>
               <ProfileForm
                 title="Nom"
                 value={user.getUserById.lastname}
                 label="lastname"
                 register={register}
               />
-              <Typography>{errors.lastname?.message}</Typography>
+              <FormError>{errors.lastname?.message}</FormError>
               <ProfileForm
                 title="Email"
                 value={user.getUserById.email}
                 label="email"
                 register={register}
               />
-              <Typography>{errors.email?.message}</Typography>
+              <FormError>{errors.email?.message}</FormError>
               <ProfileForm
                 title="Mot de passe"
                 label="password"
@@ -109,7 +110,7 @@ export default function UserUpdate(): JSX.Element {
                 label="town"
                 register={register}
               />
-              <Typography>{errors.town?.message}</Typography>
+              <FormError>{errors.town?.message}</FormError>
               <SolidButton
                 type="submit"
                 textButton="Modifier les informations"

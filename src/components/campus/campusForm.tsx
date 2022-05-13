@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import InputText from "../global/form/inputText";
+import { FormError } from "../../assets/styles/global";
 
 export default function CampusForm({
   register,
@@ -15,20 +16,20 @@ export default function CampusForm({
         register={register}
         required
       />
-      <Typography>{errors.name?.message}</Typography>
+      <FormError>{errors.name?.message}</FormError>
       <InputText
         label="phone"
         value={currentCampus.phone}
         register={register}
         required
       />
-      <Typography>{errors.phone?.message}</Typography>
+      <FormError>{errors.phone?.message}</FormError>
       <InputText
         label="address"
         value={currentCampus?.address}
         register={register}
       />
-      <Typography>{errors.address?.message}</Typography>
+      <FormError>{errors.address?.message}</FormError>
     </>
   );
 }

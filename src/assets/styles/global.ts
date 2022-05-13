@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Box, Stack } from "@mui/material";
+import { Button, Box, Stack, Typography } from "@mui/material";
 
 export const colors = {
   primary: "#0845BC",
@@ -114,3 +114,8 @@ export const Snackbar = styled(Stack)`
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   margin-top: 2rem;
 `;
+
+export const FormError = styled(Typography)`
+  color: #d3302f;
+  text-transform: capitalize;
+`

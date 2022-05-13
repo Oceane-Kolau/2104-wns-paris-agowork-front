@@ -15,6 +15,7 @@ import UserCard from "./userCard";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputPassword from "../global/form/inputPassword";
 import { userCreationSchema } from "../../utils/yupSchema/userValidationSchema";
+import { FormError } from "../../assets/styles/global";
 
 export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
   const [latestUser, setLatestUser] = useState<UserType>();
@@ -51,21 +52,21 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
           <Form onSubmit={handleSubmit(handleUser)}>
             <FormBox>
               <InputText label="firstname" register={register} required />
-              <Typography>{errors.firstname?.message}</Typography>
+              <FormError>{errors.firstname?.message}</FormError>
               <InputText label="lastname" register={register} required />
-              <Typography>{errors.lastname?.message}</Typography>
+              <FormError>{errors.lastname?.message}</FormError>
             </FormBox>
             <InputText label="email" register={register} required />
-            <Typography>{errors.email?.message}</Typography>
+            <FormError>{errors.email?.message}</FormError>
             <InputPassword register={register} required label="password" />
-            <Typography>{errors.password?.message}</Typography>
+            <FormError>{errors.password?.message}</FormError>
             <FormBox>
               <InputText label="town" register={register} required />
-              <Typography>{errors.town?.message}</Typography>
+              <FormError>{errors.town?.message}</FormError>
               {errorCampus ? (
-                <Typography>
+                <FormError>
                   Erreur de chargement, contactez votre administrateur
-                </Typography>
+                </FormError>
               ) : (
                 <InputSelect
                   id="campus-select"
