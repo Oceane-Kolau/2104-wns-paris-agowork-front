@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { FormHelperText, Typography } from "@mui/material";
 import InputText from "../global/form/inputText";
 
 export default function RessourceForm({
@@ -28,6 +28,9 @@ export default function RessourceForm({
         value={currentRessource?.tags}
         register={register}
       />
+      <FormHelperText>
+        Séparez les tags par des virgules - ex: Méthodologie, Outils, Développement
+      </FormHelperText>
       <InputText
         label="description"
         value={currentRessource?.description}

@@ -73,6 +73,12 @@ export const BorderedButton = styled(Button)`
   }
 `;
 
+export const BorderedWhiteButton = styled(Button)`
+  border: 2px solid white;
+  color: white;
+  width: 100%;
+`;
+
 export const ContainerButton = styled.div`
   margin-top: 1rem;
 `;
