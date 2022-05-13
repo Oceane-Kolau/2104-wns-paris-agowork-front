@@ -9,7 +9,7 @@ import { CampusType, GetCampusType } from "../../types/campus";
 import SolidButton from "../global/buttons/solidButton";
 import InputText from "../global/form/inputText";
 import InputSelect from "../global/form/inputSelect";
-import { Role, roles, UserCreationValues, UserType } from "../../types/user";
+import { Role, roles, UserType } from "../../types/user";
 import UserCard from "./userCard";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputPassword from "../global/form/inputPassword";
@@ -17,7 +17,7 @@ import InputPassword from "../global/form/inputPassword";
 export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
   const [latestUser, setLatestUser] = useState<UserType>();
   const { register, handleSubmit, control, reset } =
-    useForm<UserCreationValues>();
+    useForm<UserType>();
   const { error: errorCampus, data: allCampus } =
     useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
@@ -32,7 +32,7 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
     },
   });
 
-  const handleUser: SubmitHandler<UserCreationValues> = (input) => {
+  const handleUser: SubmitHandler<UserType> = (input) => {
     createUser({ variables: { input } });
     reset();
   };

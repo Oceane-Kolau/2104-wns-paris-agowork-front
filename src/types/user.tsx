@@ -6,25 +6,19 @@ export type UserType = {
   firstname: string;
   lastname: string;
   town: string;
-  picture: string;
   email: string;
   role: string;
-  mood: MoodType;
   campus: CampusType;
+  picture?: string;
+  mood?: MoodType;
 };
 
 export type GetUsersType = {
   getAllUsers: UserType[];
 };
 
-export type UserCreationValues = {
-  firstname: string;
-  lastname: string;
-  town: string;
-  password: string;
-  email: string;
-  role: string;
-  campus: string;
+export type Role = {
+  name: string;
 };
 
 export const roles = [
@@ -38,18 +32,3 @@ export const roles = [
     name: "ADMIN",
   },
 ];
-
-export type UserUpdateValues = {
-  id: string;
-  firstname: string;
-  lastname: string;
-  town: string;
-  password: string;
-  email: string;
-  role: string;
-  campus: string;
-};
-
-export type Role = {
-  name : string
-}
