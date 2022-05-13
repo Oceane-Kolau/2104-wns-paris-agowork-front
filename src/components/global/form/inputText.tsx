@@ -6,14 +6,15 @@ export default function InputText({
   label,
   required,
   register,
-  type,
+  multiline,
   value,
 }: any): JSX.Element {
   return (
     <GroupForm>
       <TextField
         {...register(label, { required })}
-        type={!type ? "text" : type}
+        type="text"
+        multiline={multiline}
         defaultValue={value}
         required={required}
         label={label}

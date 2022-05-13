@@ -53,7 +53,7 @@ export default function RessourceCreation({
       alignItems="center"
       columnSpacing={{ xs: 1, sm: 2, md: 10 }}
     >
-      <Grid item xs={12} sm={9} md={6} lg={5} xl={5}>
+      <Grid item xs={12} sm={12} md={10} lg={5} xl={5}>
         <Card sx={{ p: 1 }}>
           <CardContent>
             <FormTitle>Ajouter une ressource</FormTitle>
@@ -65,12 +65,12 @@ export default function RessourceCreation({
         </Card>
       </Grid>
       {latestRessource ? (
-        <>
+        <Grid item xs={12} sm={12} md={10} lg={7} xl={7}>
           <LatestCreatedTitle>
             👉&nbsp;&nbsp;Nouvelle Ressource
           </LatestCreatedTitle>
           <RessourceCard {...latestRessource} key={latestRessource.id} />
-        </>
+        </Grid>
       ) : (
         <></>
       )}

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Box } from "@mui/material";
-import InputText from "../global/form/inputText";
 import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { CardForm, Form, FormBox } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";

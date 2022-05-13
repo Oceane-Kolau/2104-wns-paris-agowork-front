@@ -20,7 +20,6 @@ export default function MoodForm({
       <BoxIcon>
         <InputText
           label="name"
-          type="text"
           register={register}
           value={currentMoodName}
           required
@@ -40,7 +39,7 @@ export default function MoodForm({
             ))}
           </InputSelect>
         ) : (
-          <InputText label="icon" type="text" register={register} required />
+          <InputText label="icon" register={register} required />
         )}
       </BoxIcon>
       <Typography sx={{ marginTop: 2 }}>

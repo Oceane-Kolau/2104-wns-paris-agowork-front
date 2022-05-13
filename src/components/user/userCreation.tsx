@@ -45,25 +45,22 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
             <FormBox>
               <InputText
                 label="firstname"
-                type="text"
                 register={register}
                 required
               />
               <InputText
                 label="lastname"
-                type="text"
                 register={register}
                 required
               />
             </FormBox>
 
-            <InputText label="email" type="text" register={register} required />
+            <InputText label="email" register={register} required />
             <InputPassword register={register} required label="password" />
 
             <FormBox>
               <InputText
                 label="town"
-                type="text"
                 register={register}
                 required
               />

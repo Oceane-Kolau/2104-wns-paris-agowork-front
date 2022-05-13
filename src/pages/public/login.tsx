@@ -64,7 +64,6 @@ export default function Login(): JSX.Element {
             <LoginForm onSubmit={handleSubmit(handleLogin)}>
               <InputText
                 label="email"
-                type="text"
                 register={register}
                 required
               />
