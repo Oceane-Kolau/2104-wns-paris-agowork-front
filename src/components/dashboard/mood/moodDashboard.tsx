@@ -11,7 +11,7 @@ import {
 import { UPDATE_USER_MOOD } from "../../../graphql/mutations/social/mood";
 import SolidButton from "../../global/buttons/solidButton";
 import { GET_ALL_MOODS } from "../../../graphql/queries/social/mood";
-import { GetMoodsType, MoodType } from "../../../types/mood";
+import { GetMoodsType, MoodType } from "../../../utils/types/mood";
 import InputSelect from "../../global/form/inputSelect";
 import { MoodIcon } from "../../../assets/styles/list/list";
 import { GET_LOGGED_USER } from "../../../graphql/queries/user/user";

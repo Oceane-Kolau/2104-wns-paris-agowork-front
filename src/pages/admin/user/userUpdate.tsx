@@ -2,19 +2,21 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Card, CardContent, Grid, MenuItem } from "@mui/material";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Card, CardContent, Grid, MenuItem, Typography } from "@mui/material";
 import { UPDATE_USER } from "../../../graphql/mutations/user/user";
 import { Form } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";
-import { CampusType, GetCampusType } from "../../../types/campus";
+import { CampusType, GetCampusType } from "../../../utils/types/campus";
 import SolidButton from "../../../components/global/buttons/solidButton";
 import InputSelect from "../../../components/global/form/inputSelect";
 import { CardTitle } from "../../../assets/styles/list/list";
 import { GET_ONE_USER } from "../../../graphql/queries/user/user";
-import ProfileForm from "../../../components/global/form/profileForm";
-import { roles, UserType } from "../../../types/user";
+import ProfileForm from "../../../components/user/profileForm";
+import { roles, UserType } from "../../../utils/types/user";
 import Loading from "../../../components/global/loading/loading";
 import ErrorPopup from "../../../components/global/error/errorPopup";
+import { userUpdateSchema } from "../../../utils/yupSchema/userValidationSchema";
 
 export default function UserUpdate(): JSX.Element {
   const { id } = useParams();
@@ -22,8 +24,14 @@ export default function UserUpdate(): JSX.Element {
   const preloadedValues = {
     id: id,
   };
-  const { register, handleSubmit, control } = useForm<UserType>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<UserType>({
     defaultValues: preloadedValues,
+    resolver: yupResolver(userUpdateSchema),
   });
 
   const { error: errorCampus, data: allCampus } =
@@ -75,18 +83,21 @@ export default function UserUpdate(): JSX.Element {
                 label="firstname"
                 register={register}
               />
+              <Typography>{errors.firstname?.message}</Typography>
               <ProfileForm
                 title="Nom"
                 value={user.getUserById.lastname}
                 label="lastname"
                 register={register}
               />
+              <Typography>{errors.lastname?.message}</Typography>
               <ProfileForm
                 title="Email"
                 value={user.getUserById.email}
                 label="email"
                 register={register}
               />
+              <Typography>{errors.email?.message}</Typography>
               <ProfileForm
                 title="Mot de passe"
                 label="password"
@@ -98,6 +109,7 @@ export default function UserUpdate(): JSX.Element {
                 label="town"
                 register={register}
               />
+              <Typography>{errors.town?.message}</Typography>
               <SolidButton
                 type="submit"
                 textButton="Modifier les informations"

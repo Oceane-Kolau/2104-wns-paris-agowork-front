@@ -6,15 +6,22 @@ import { CREATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { CardForm, Form, FormBox } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
-import { CampusType } from "../../types/campus";
+import { CampusType } from "../../utils/types/campus";
 import CampusCard from "./campusCard";
 import CampusForm from "./campusForm";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { campusSchema } from "../../utils/yupSchema/campusValidationSchema";
 
 export default function CampusCreation({
   handleRefreshCampus,
 }: any): JSX.Element {
   const [latestCampus, setLatestCampus] = useState<CampusType>();
-  const { register, handleSubmit, reset } = useForm<CampusType>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<CampusType>({ resolver: yupResolver(campusSchema) });
 
   const [createCampus] = useMutation(CREATE_CAMPUS, {
     onCompleted: (data) => {
@@ -35,7 +42,7 @@ export default function CampusCreation({
         <CardForm>
           <FormTitle>Ajouter un campus</FormTitle>
           <Form onSubmit={handleSubmit(handleCampus)}>
-            <CampusForm register={register} />
+            <CampusForm register={register} errors={errors} />
             <SolidButton type="submit" textButton="Ajouter ce campus" />
           </Form>
         </CardForm>

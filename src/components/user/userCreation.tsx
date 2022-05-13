@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, MenuItem, Typography } from "@mui/material";
 import { CREATE_USER } from "../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../graphql/queries/infrastructures/campus";
-import { CampusType, GetCampusType } from "../../types/campus";
+import { CampusType, GetCampusType } from "../../utils/types/campus";
 import SolidButton from "../global/buttons/solidButton";
 import InputText from "../global/form/inputText";
 import InputSelect from "../global/form/inputSelect";
-import { Role, roles, UserType } from "../../types/user";
+import { Role, roles, UserType } from "../../utils/types/user";
 import UserCard from "./userCard";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputPassword from "../global/form/inputPassword";
+import { userCreationSchema } from "../../utils/yupSchema/userValidationSchema";
 
 export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
   const [latestUser, setLatestUser] = useState<UserType>();
-  const { register, handleSubmit, control, reset } =
-    useForm<UserType>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm<UserType>({ resolver: yupResolver(userCreationSchema) });
   const { error: errorCampus, data: allCampus } =
     useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
@@ -43,27 +50,18 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
           <FormTitle>Ajouter un utilisateur</FormTitle>
           <Form onSubmit={handleSubmit(handleUser)}>
             <FormBox>
-              <InputText
-                label="firstname"
-                register={register}
-                required
-              />
-              <InputText
-                label="lastname"
-                register={register}
-                required
-              />
+              <InputText label="firstname" register={register} required />
+              <Typography>{errors.firstname?.message}</Typography>
+              <InputText label="lastname" register={register} required />
+              <Typography>{errors.lastname?.message}</Typography>
             </FormBox>
-
             <InputText label="email" register={register} required />
+            <Typography>{errors.email?.message}</Typography>
             <InputPassword register={register} required label="password" />
-
+            <Typography>{errors.password?.message}</Typography>
             <FormBox>
-              <InputText
-                label="town"
-                register={register}
-                required
-              />
+              <InputText label="town" register={register} required />
+              <Typography>{errors.town?.message}</Typography>
               {errorCampus ? (
                 <Typography>
                   Erreur de chargement, contactez votre administrateur

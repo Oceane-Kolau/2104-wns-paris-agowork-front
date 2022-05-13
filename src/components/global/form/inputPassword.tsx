@@ -1,6 +1,7 @@
 import React, { MouseEvent, useState } from "react";
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -48,6 +49,9 @@ export default function InputPassword({
             </InputAdornment>
           }
         />
+        <FormHelperText>
+          Min 8 caractères, une majuscule, un nombre, max 32 caractères
+        </FormHelperText>
       </FormControl>
     </GroupForm>
   );

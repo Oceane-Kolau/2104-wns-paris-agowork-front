@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
 import { useMutation } from "@apollo/client";
 import { Dialog, DialogContent, IconButton } from "@mui/material";
 import { Close } from "@mui/icons-material";
@@ -10,7 +12,7 @@ import Loading from "../global/loading/loading";
 import ErrorPopup from "../global/error/errorPopup";
 import { FormTitle } from "../../assets/styles/list/list";
 import { ModalBar } from "../../assets/styles/modal";
-import { RessourceValues } from "../../types/ressource";
+import { RessourceValues } from "../../utils/types/ressource";
 import { UPDATE_RESSOURCE } from "../../graphql/mutations/ressources/ressource";
 import RessourceForm from "./ressourceForm";
 
@@ -21,7 +23,7 @@ export default function Ressourceupdate({
   currentRessource,
 }: any): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, reset } = useForm<RessourceValues>();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<RessourceValues>({resolver: yupResolver(ressourceSchema)});
 
   const [updateRessource, { loading: loadingUpdateRessource }] = useMutation(
     UPDATE_RESSOURCE,
@@ -84,6 +86,7 @@ export default function Ressourceupdate({
           <RessourceForm
             register={register}
             currentRessource={currentRessource}
+            errors={errors}
           />
           <SolidButton type="submit" textButton="Modifier cette ressource" />
         </Form>

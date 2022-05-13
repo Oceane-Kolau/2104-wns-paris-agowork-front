@@ -6,13 +6,15 @@ import { UPDATE_CAMPUS } from "../../graphql/mutations/infrastructures/campus";
 import { Form } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";
 import { FormTitle } from "../../assets/styles/list/list";
-import { CampusType } from "../../types/campus";
+import { CampusType } from "../../utils/types/campus";
 import CampusForm from "./campusForm";
 import { ModalBar } from "../../assets/styles/modal";
 import { TopBar } from "../../assets/styles/sidebar/sidebar";
 import { Close } from "@mui/icons-material";
 import Loading from "../global/loading/loading";
 import ErrorPopup from "../global/error/errorPopup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { campusSchema } from "../../utils/yupSchema/campusValidationSchema";
 
 export default function CampusUpdate({
   open,
@@ -21,7 +23,7 @@ export default function CampusUpdate({
   currentCampus,
 }: any): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, reset } = useForm<CampusType>();
+  const { register, handleSubmit, reset, formState: {errors} } = useForm<CampusType>({resolver: yupResolver(campusSchema)});
 
   const [updateCampus, {loading: loadingUpdateCampus}] = useMutation(UPDATE_CAMPUS, {
     onCompleted: () => {
@@ -74,7 +76,7 @@ export default function CampusUpdate({
       <DialogContent>
         <FormTitle>Modifier ce campus</FormTitle>
         <Form onSubmit={handleSubmit(handleCampus)}>
-          <CampusForm register={register} currentCampus={currentCampus} />
+          <CampusForm register={register} currentCampus={currentCampus} errors={errors} />
           <SolidButton type="submit" textButton="Modifier ce campus" />
         </Form>
       </DialogContent>

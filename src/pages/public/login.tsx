@@ -18,7 +18,7 @@ import SolidButton from "../../components/global/buttons/solidButton";
 import ErrorPopup from "../../components/global/error/errorPopup";
 import InputText from "../../components/global/form/inputText";
 import InputPassword from "../../components/global/form/inputPassword";
-import { LoginValues } from "../../types/login";
+import { LoginValues } from "../../utils/types/login";
 
 export default function Login(): JSX.Element {
   const navigate = useNavigate();

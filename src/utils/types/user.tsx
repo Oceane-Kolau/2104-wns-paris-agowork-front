@@ -8,6 +8,7 @@ export type UserType = {
   town: string;
   email: string;
   role: string;
+  password?: string;
   campus: CampusType;
   picture?: string;
   mood?: MoodType;

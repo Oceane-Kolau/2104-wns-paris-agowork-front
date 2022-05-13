@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import InputPassword from "./inputPassword";
-import InputText from "./inputText";
-import { FormBox } from "../../../assets/styles/form";
+import InputPassword from "../global/form/inputPassword";
+import InputText from "../global/form/inputText";
+import { FormBox } from "../../assets/styles/form";
 
 const ProfileForm = ({
   title,

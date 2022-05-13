@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ressourceSchema } from "../../utils/yupSchema/ressourceValidationSchema";
 import { Card, CardContent, Grid } from "@mui/material";
 import { useMutation } from "@apollo/client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CREATE_RESSOURCE } from "../../graphql/mutations/ressources/ressource";
-import { RessourceValues, RessourceType } from "../../types/ressource";
+import { RessourceValues, RessourceType } from "../../utils/types/ressource";
 import RessourceCard from "./ressourceCard";
 import Loading from "../global/loading/loading";
 import { Form } from "../../assets/styles/form";
@@ -16,8 +18,14 @@ export default function RessourceCreation({
   handleRefreshRessource,
 }: any): JSX.Element {
   const [latestRessource, setLatestRessource] = useState<RessourceType>();
-  const { register, handleSubmit, reset } = useForm<RessourceValues>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<RessourceValues>({ resolver: yupResolver(ressourceSchema) });
   const [errorMessage, setErrorMessage] = useState("");
+
   const [createRessource, { loading: loadingCreationRessource }] = useMutation(
     CREATE_RESSOURCE,
     {
@@ -58,7 +66,7 @@ export default function RessourceCreation({
           <CardContent>
             <FormTitle>Ajouter une ressource</FormTitle>
             <Form onSubmit={handleSubmit(handleRessource)}>
-              <RessourceForm register={register} />
+              <RessourceForm register={register} errors={errors} />
               <SolidButton type="submit" textButton="Ajouter cette ressource" />
             </Form>
           </CardContent>

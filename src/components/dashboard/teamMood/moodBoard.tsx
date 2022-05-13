@@ -9,7 +9,7 @@ import {
 import { GET_STUDENTS_MOOD } from "../../../graphql/queries/user/user";
 import { ProfileAvatar } from "../../../assets/styles/sidebar/sidebar";
 import TeamMood from "./teamMood";
-import { GetUsersMoodType, UserMoodType } from "../../../types/mood";
+import { GetUsersMoodType, UserMoodType } from "../../../utils/types/mood";
 
 export default function MoodBoard(): JSX.Element {
   const { data } = useQuery<GetUsersMoodType>(GET_STUDENTS_MOOD);

@@ -8,6 +8,7 @@ import { moods } from "./mood.enum";
 export default function MoodForm({
   register,
   control,
+  errors,
   currentMoodName,
 }: any): JSX.Element {
   const [personalizedIcon, setPersonalizedIcon] = useState<boolean>(false);
@@ -24,6 +25,7 @@ export default function MoodForm({
           value={currentMoodName}
           required
         />
+        <Typography>{errors.name?.message}</Typography>
         {!personalizedIcon ? (
           <InputSelect
             id="icon-select"
@@ -41,6 +43,7 @@ export default function MoodForm({
         ) : (
           <InputText label="icon" register={register} required />
         )}
+        <Typography>{errors.icon?.message}</Typography>
       </BoxIcon>
       <Typography sx={{ marginTop: 2 }}>
         {!personalizedIcon

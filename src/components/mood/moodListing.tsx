@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_MOODS } from "../../graphql/queries/social/mood";
-import { GetMoodsType, MoodType } from "../../types/mood";
+import { GetMoodsType, MoodType } from "../../utils/types/mood";
 import { CardsBoard } from "../../assets/styles/dashboard/teamMood";
 import Loading from "../global/loading/loading";
 import MoodCard from "./moodCard";

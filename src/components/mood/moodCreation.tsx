@@ -6,16 +6,18 @@ import { CREATE_MOOD } from "../../graphql/mutations/social/mood";
 import { Form, FormBox, CardForm } from "../../assets/styles/form";
 import SolidButton from "../global/buttons/solidButton";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
-import { MoodType, MoodValues } from "../../types/mood";
+import { MoodType, MoodValues } from "../../utils/types/mood";
 import MoodCard from "./moodCard";
 import Loading from "../global/loading/loading";
 import ErrorPopup from "../global/error/errorPopup";
 import MoodForm from "./moodForm";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { moodSchema } from "../../utils/yupSchema/moodValidationSchema";
 
 export default function MoodCreation({ handleRefreshMood }: any): JSX.Element {
   const [latestMood, setLatestMood] = useState<MoodType>();
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, control, reset } = useForm<MoodValues>();
+  const { register, handleSubmit, control, reset, formState: {errors} } = useForm<MoodValues>({resolver: yupResolver(moodSchema)});
 
   const [createMood, { loading: loadingCreationMood }] = useMutation(
     CREATE_MOOD,
@@ -52,7 +54,7 @@ export default function MoodCreation({ handleRefreshMood }: any): JSX.Element {
         <CardForm>
           <FormTitle>Modifier un mood</FormTitle>
           <Form onSubmit={handleSubmit(handleMood)}>
-            <MoodForm register={register} control={control} />
+            <MoodForm register={register} control={control} errors={errors} />
             <SolidButton type="submit" textButton="Ajouter ce mood" />
           </Form>
         </CardForm>

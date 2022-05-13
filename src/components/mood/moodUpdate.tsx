@@ -7,12 +7,14 @@ import { UPDATE_MOOD } from "../../graphql/mutations/social/mood";
 import { Form } from "../../assets/styles/form";
 import { TopBar } from "../../assets/styles/sidebar/sidebar";
 import SolidButton from "../global/buttons/solidButton";
-import { MoodValues } from "../../types/mood";
+import { MoodValues } from "../../utils/types/mood";
 import Loading from "../global/loading/loading";
 import ErrorPopup from "../global/error/errorPopup";
 import MoodForm from "./moodForm";
 import { FormTitle } from "../../assets/styles/list/list";
 import { ModalBar } from "../../assets/styles/modal";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { moodSchema } from "../../utils/yupSchema/moodValidationSchema";
 
 export default function MoodUpdate({
   handleRefreshMood,
@@ -21,7 +23,7 @@ export default function MoodUpdate({
   currentMood,
 }: any): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("");
-  const { register, handleSubmit, control, reset } = useForm<MoodValues>();
+  const { register, handleSubmit, control, reset, formState: {errors} } = useForm<MoodValues>({resolver: yupResolver(moodSchema)});
 
   const [updateMood, { loading: loadingUpdateMood }] = useMutation(
     UPDATE_MOOD,
@@ -85,6 +87,7 @@ export default function MoodUpdate({
             register={register}
             control={control}
             currentMoodName={currentMood?.name}
+            errors={errors}
           />
           <SolidButton type="submit" textButton="Modifier ce mood" />
         </Form>
