@@ -18,7 +18,7 @@ const GET_RESSOURCES_SUCCESS_MOCK = {
           link: "https://jobeet-tutorial.readthedocs.io/en/latest/days/",
           description: "Ceci est un test pour voir",
           tags: ["MUI", "Google", " CSS"],
-          updatedAt: '1651680133496',
+          updatedAt: "1651680133496",
         },
         {
           id: "2",
@@ -27,7 +27,7 @@ const GET_RESSOURCES_SUCCESS_MOCK = {
           link: "https://jobeet",
           description: "Ceci est un test pour voir si tout fonctionne un peu",
           tags: ["MUI", "Google", " CSS"],
-          updatedAt: '1651680133496',
+          updatedAt: "1651680133496",
         },
         {
           id: "3",
@@ -36,7 +36,7 @@ const GET_RESSOURCES_SUCCESS_MOCK = {
           link: "https://latest/days/",
           description: "Ceci est un test pour voir si tout fonctionne",
           tags: ["MUI", "GraphQL", " CSS"],
-          updatedAt: '1651680133496',
+          updatedAt: "1651680133496",
         },
       ],
     },
@@ -59,7 +59,7 @@ describe("Testing ressources list", () => {
           addTypename={false}
         >
           <RessourceListing />
-        </MockedProvider>,
+        </MockedProvider>
       );
 
       expect(screen.getByTestId("loading")).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe("Testing ressources list", () => {
       render(
         <MockedProvider mocks={[GET_MODULES_ERROR_MOCK]} addTypename={false}>
           <RessourceListing />
-        </MockedProvider>,
+        </MockedProvider>
       );
 
       const errorMessage = await waitFor(() => screen.getByText("ERROR"));
@@ -88,7 +88,7 @@ describe("Testing ressources list", () => {
           addTypename={false}
         >
           <RessourceListing />
-        </MockedProvider>,
+        </MockedProvider>
       );
 
       const list = await waitFor(() => screen.getByTestId("ressources"));

@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-} from "@mui/material";
-import { Tags } from "../../types/ressource";
+import { Box, Typography } from "@mui/material";
+import { Tags } from "../../utils/types/ressource";
 
-const RessourceTag = ({tags}: Tags): JSX.Element => {
+const RessourceTag = ({ tags }: Tags): JSX.Element => {
   return (
     <Box
       sx={{

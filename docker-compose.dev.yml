@@ -17,8 +17,12 @@ services:
         - 3001:3000
       volumes:
         - ./src:/app/src/
+      env_file: 
+        - .env.local
       environment:
-        - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_USEPOLLING=true
+      - FAST_REFRESH=false
+      - ESLINT_NO_DEV_ERRORS=false
 
     2104-wns-paris-agowork-back:
       container_name: agowork_back

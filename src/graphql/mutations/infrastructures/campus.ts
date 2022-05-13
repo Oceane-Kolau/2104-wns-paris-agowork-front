@@ -11,6 +11,17 @@ export const CREATE_CAMPUS = gql`
   }
 `;
 
+export const UPDATE_CAMPUS = gql`
+  mutation updateCampus($input: CampusInput!) {
+    updateCampus(input: $input) {
+      id
+      name
+      address
+      phone
+    }
+  }
+`;
+
 export const DELETE_CAMPUS = gql`
   mutation deleteCampus($id: ID!) {
     deleteCampus(id: $id) {

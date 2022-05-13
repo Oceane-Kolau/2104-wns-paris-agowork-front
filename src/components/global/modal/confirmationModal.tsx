@@ -2,7 +2,7 @@ import React from "react";
 import { Report } from "@mui/icons-material";
 import { Modal, Typography } from "@mui/material";
 import {
-  BorderedButton,
+  BorderedWhiteButton,
   ColoredButton,
   Popup,
 } from "../../../assets/styles/global";
@@ -30,9 +30,9 @@ const ConfirmationModal = ({
           Êtes-vous sûr de vouloir supprimer définitivement cet élément ?
         </Typography>
         <BoxIcon>
-          <BorderedButton sx={{ marginRight: 2 }} onClick={handleClose}>
+          <BorderedWhiteButton sx={{ marginRight: 2 }} onClick={handleClose}>
             Non
-          </BorderedButton>
+          </BorderedWhiteButton>
           <ColoredButton onClick={handleDelete}>Oui</ColoredButton>
         </BoxIcon>
       </Popup>

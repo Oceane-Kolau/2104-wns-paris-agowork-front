@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_CAMPUS } from "../../graphql/queries/infrastructures/campus";
 import { CardsBoard } from "../../assets/styles/dashboard/teamMood";
-import { CampusType, GetCampusType } from "../../types/campus";
+import { CampusType, GetCampusType } from "../../utils/types/campus";
 import Loading from "../global/loading/loading";
 import CampusCard from "./campusCard";
 

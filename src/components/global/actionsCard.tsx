@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { CardActions, IconButton } from "@mui/material";
 import { Delete, MoreVert } from "@mui/icons-material";
 import ConfirmationModal from "./modal/confirmationModal";
-import { Link } from "react-router-dom";
-import UpdateModal from "./modal/updateModal";
 
-const ActionsCard = ({ handleDeleteEl, link, handleOpenUpdateModal }: any): JSX.Element => {
+const ActionsCard = ({
+  handleDeleteEl,
+  link,
+  handleOpenUpdateModal,
+}: any): JSX.Element => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const handleOpenDeleteModal = () => setOpenDeleteModal(true);
   const handleCloseDeleteModal = () => setOpenDeleteModal(false);

@@ -32,4 +32,3 @@ export const UPDATE_RESSOURCE = gql`
     }
   }
 `;
-

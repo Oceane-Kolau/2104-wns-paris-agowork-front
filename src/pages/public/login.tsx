@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import jwt_decode from "jwt-decode";
 import { useMutation } from "@apollo/client";
+import { Typography } from "@mui/material";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
   Title,
@@ -18,14 +20,21 @@ import SolidButton from "../../components/global/buttons/solidButton";
 import ErrorPopup from "../../components/global/error/errorPopup";
 import InputText from "../../components/global/form/inputText";
 import InputPassword from "../../components/global/form/inputPassword";
-import { LoginValues } from "../../types/login";
+import { LoginValues } from "../../utils/types/login";
+import { loginSchema } from "../../utils/yupSchema/userValidationSchema";
+import { FormError } from "../../assets/styles/global";
 
 export default function Login(): JSX.Element {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorHidden, setErrorHidden] = useState(true);
-  const { register, handleSubmit, reset } = useForm<LoginValues>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<LoginValues>({ resolver: yupResolver(loginSchema) });
 
   const [login, { loading }] = useMutation(LOGIN_USER, {
     onCompleted: (data) => {
@@ -62,13 +71,10 @@ export default function Login(): JSX.Element {
             <Loading />
           ) : (
             <LoginForm onSubmit={handleSubmit(handleLogin)}>
-              <InputText
-                label="email"
-                type="text"
-                register={register}
-                required
-              />
-              <InputPassword register={register} />
+              <InputText label="email" register={register} required />
+              <FormError>{errors.email?.message}</FormError>
+              <InputPassword register={register} required label="password" />
+              <FormError>{errors.password?.message}</FormError>
               <SolidButton type="submit" textButton="Connexion" />
             </LoginForm>
           )}
