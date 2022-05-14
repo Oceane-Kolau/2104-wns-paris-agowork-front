@@ -4,8 +4,7 @@ import { useMutation } from "@apollo/client";
 import { CardList, CardTitle, MoodIcon } from "../../assets/styles/list/list";
 import ActionsCard from "../global/actionsCard";
 import { DELETE_MOOD } from "../../graphql/mutations/social/mood";
-import UpdateModal from "../global/modal/updateModal";
-import MoodCreation from "./moodCreation";
+import MoodUpdate from "./moodUpdate";
 
 const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
@@ -43,13 +42,13 @@ const MoodCard = ({ updateListing, ...mood }: any): JSX.Element => {
               handleDeleteEl={handleDeleteMood}
               handleOpenUpdateModal={handleOpenUpdateModal}
             />
-            <UpdateModal
+            <MoodUpdate
               open={openUpdateModal}
               handleCloseUpdateModal={handleCloseUpdateModal}
               handleUpdate={handleUpdate}
-            >
-              <MoodCreation currentMood={mood} />
-            </UpdateModal>
+              currentMood={mood}
+              handleRefreshMood={updateListing}
+            />
           </>
         )}
       </CardList>

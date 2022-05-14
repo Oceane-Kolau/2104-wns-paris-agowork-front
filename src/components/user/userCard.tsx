@@ -14,7 +14,6 @@ import {
   RoleTag,
 } from "../../assets/styles/list/list";
 
-
 const UserCard = ({ updateListing, ...user }: any): JSX.Element => {
   const [deleteUser] = useMutation(DELETE_USER, {
     onCompleted: () => {
@@ -67,9 +66,11 @@ const UserCard = ({ updateListing, ...user }: any): JSX.Element => {
           ) : (
             <></>
           )}
-          
         </CardContent>
-        <ActionsCard handleDeleteEl={handleDeleteEl} link={`/general/utilisateur/${user.id}`} /> 
+        <ActionsCard
+          handleDeleteEl={handleDeleteEl}
+          link={`/general/utilisateur/${user.id}`}
+        />
       </CardList>
     </>
   );

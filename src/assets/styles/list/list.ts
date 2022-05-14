@@ -41,6 +41,7 @@ export const FormTitle = styled.h2`
   font-size: 25px;
   margin: 1px 0 2px 0;
   font-weight: 600;
+  color: black;
 `;
 
 export const LatestCreatedTitle = styled.h3`

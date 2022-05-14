@@ -1,23 +1,31 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, MenuItem, Typography } from "@mui/material";
 import { CREATE_USER } from "../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../graphql/queries/infrastructures/campus";
-import { CampusType, GetCampusType } from "../../types/campus";
+import { CampusType, GetCampusType } from "../../utils/types/campus";
 import SolidButton from "../global/buttons/solidButton";
 import InputText from "../global/form/inputText";
 import InputSelect from "../global/form/inputSelect";
-import { roles, UserCreationValues, UserType } from "../../types/user";
+import { Role, roles, UserType } from "../../utils/types/user";
 import UserCard from "./userCard";
 import { FormTitle, LatestCreatedTitle } from "../../assets/styles/list/list";
 import InputPassword from "../global/form/inputPassword";
+import { userCreationSchema } from "../../utils/yupSchema/userValidationSchema";
+import { FormError } from "../../assets/styles/global";
 
 export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
   const [latestUser, setLatestUser] = useState<UserType>();
-  const { register, handleSubmit, control, reset } =
-    useForm<UserCreationValues>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm<UserType>({ resolver: yupResolver(userCreationSchema) });
   const { error: errorCampus, data: allCampus } =
     useQuery<GetCampusType>(GET_ALL_CAMPUS);
 
@@ -32,7 +40,7 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
     },
   });
 
-  const handleUser: SubmitHandler<UserCreationValues> = (input) => {
+  const handleUser: SubmitHandler<UserType> = (input) => {
     createUser({ variables: { input } });
     reset();
   };
@@ -43,34 +51,22 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
           <FormTitle>Ajouter un utilisateur</FormTitle>
           <Form onSubmit={handleSubmit(handleUser)}>
             <FormBox>
-              <InputText
-                label="firstname"
-                type="text"
-                register={register}
-                required
-              />
-              <InputText
-                label="lastname"
-                type="text"
-                register={register}
-                required
-              />
+              <InputText label="firstname" register={register} required />
+              <FormError>{errors.firstname?.message}</FormError>
+              <InputText label="lastname" register={register} required />
+              <FormError>{errors.lastname?.message}</FormError>
             </FormBox>
-
-            <InputText label="email" type="text" register={register} required />
-            <InputPassword register={register} />
-
+            <InputText label="email" register={register} required />
+            <FormError>{errors.email?.message}</FormError>
+            <InputPassword register={register} required label="password" />
+            <FormError>{errors.password?.message}</FormError>
             <FormBox>
-              <InputText
-                label="town"
-                type="text"
-                register={register}
-                required
-              />
+              <InputText label="town" register={register} required />
+              <FormError>{errors.town?.message}</FormError>
               {errorCampus ? (
-                <Typography>
+                <FormError>
                   Erreur de chargement, contactez votre administrateur
-                </Typography>
+                </FormError>
               ) : (
                 <InputSelect
                   id="campus-select"
@@ -78,9 +74,9 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
                   label="Campus"
                   control={control}
                 >
-                  {allCampus?.getCampus.map((list: CampusType) => (
-                    <MenuItem key={list.id} value={list.id}>
-                      {list.name}
+                  {allCampus?.getCampus.map((campus: CampusType) => (
+                    <MenuItem key={campus.id} value={campus.id}>
+                      {campus.name}
                     </MenuItem>
                   ))}
                 </InputSelect>
@@ -93,9 +89,9 @@ export default function UserCreation({ handleRefreshUser }: any): JSX.Element {
               control={control}
               required
             >
-              {roles.map((list: any) => (
-                <MenuItem key={list.name} value={list.name}>
-                  {list.name}
+              {roles.map((role: Role) => (
+                <MenuItem key={role.name} value={role.name}>
+                  {role.name}
                 </MenuItem>
               ))}
             </InputSelect>

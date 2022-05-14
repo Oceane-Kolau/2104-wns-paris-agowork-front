@@ -12,7 +12,8 @@ export type GetRessourcesType = {
   getAllRessources: RessourceType[];
 };
 
-export type RessourceCreationValues = {
+export type RessourceValues = {
+  id?: string;
   title: string;
   link: string;
   description?: string;
@@ -20,10 +21,10 @@ export type RessourceCreationValues = {
 };
 
 export type Tags = {
-  tags: [string]
-}
+  tags: [string];
+};
 
 export type CaptionRessourceCard = {
   updatedAt: Date;
-  author: string
-}
+  author: string;
+};

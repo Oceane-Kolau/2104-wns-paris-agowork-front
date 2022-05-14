@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, Box, Stack } from "@mui/material";
+import { Button, Box, Stack, Typography } from "@mui/material";
 
 export const colors = {
   primary: "#0845BC",
@@ -73,6 +73,12 @@ export const BorderedButton = styled(Button)`
   }
 `;
 
+export const BorderedWhiteButton = styled(Button)`
+  border: 2px solid white;
+  color: white;
+  width: 100%;
+`;
+
 export const ContainerButton = styled.div`
   margin-top: 1rem;
 `;
@@ -107,4 +113,9 @@ export const hide = styled.div`
 export const Snackbar = styled(Stack)`
   visibility: ${(props) => (props.hidden ? "hidden" : "visible")};
   margin-top: 2rem;
+`;
+
+export const FormError = styled(Typography)`
+  color: #d3302f;
+  text-transform: capitalize;
 `;

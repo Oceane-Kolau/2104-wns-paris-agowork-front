@@ -1,5 +1,5 @@
 export type CampusType = {
-  id: string;
+  id?: string;
   name: string;
   phone: string;
   address: string;
@@ -7,10 +7,4 @@ export type CampusType = {
 
 export type GetCampusType = {
   getCampus: CampusType[];
-};
-
-export type CampusCreationValues = {
-  name: string;
-  address: string;
-  phone: string;
 };

@@ -4,10 +4,12 @@ import { BoxIcon } from "../../assets/styles/list/list";
 import InputSelect from "../global/form/inputSelect";
 import InputText from "../global/form/inputText";
 import { moods } from "./mood.enum";
+import { FormError } from "../../assets/styles/global";
 
 export default function MoodForm({
   register,
   control,
+  errors,
   currentMoodName,
 }: any): JSX.Element {
   const [personalizedIcon, setPersonalizedIcon] = useState<boolean>(false);
@@ -20,11 +22,11 @@ export default function MoodForm({
       <BoxIcon>
         <InputText
           label="name"
-          type="text"
           register={register}
           value={currentMoodName}
           required
         />
+        <FormError>{errors.name?.message}</FormError>
         {!personalizedIcon ? (
           <InputSelect
             id="icon-select"
@@ -40,8 +42,9 @@ export default function MoodForm({
             ))}
           </InputSelect>
         ) : (
-          <InputText label="icon" type="text" register={register} required />
+          <InputText label="icon" register={register} required />
         )}
+        <FormError>{errors.icon?.message}</FormError>
       </BoxIcon>
       <Typography sx={{ marginTop: 2 }}>
         {!personalizedIcon

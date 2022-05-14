@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import { colors, shapes } from "../global";
 
 export const CardsBoard = styled(Box)`
@@ -64,6 +64,10 @@ export const MoodName = styled(Typography)`
 
 export const MoodProfile = styled(Typography)`
   font-size: 25px;
+`;
+
+export const AlertHelp = styled(IconButton)`
+  color: ${colors.mediumBlue};
 `;
 
 export const IconTeamMood = styled.img`
