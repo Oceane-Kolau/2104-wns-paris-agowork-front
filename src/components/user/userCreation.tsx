@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, MenuItem, Typography } from "@mui/material";
+import { Box, MenuItem } from "@mui/material";
 import { CREATE_USER } from "../../graphql/mutations/user/user";
 import { Form, FormBox, UserForm } from "../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../graphql/queries/infrastructures/campus";
