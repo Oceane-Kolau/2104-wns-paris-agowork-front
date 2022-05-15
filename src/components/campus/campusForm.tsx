@@ -1,5 +1,4 @@
 import React from "react";
-import { Typography } from "@mui/material";
 import InputText from "../global/form/inputText";
 import { FormError } from "../../assets/styles/global";
 

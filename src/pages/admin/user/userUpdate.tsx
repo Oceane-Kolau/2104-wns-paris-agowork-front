@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Card, CardContent, Grid, MenuItem, Typography } from "@mui/material";
+import { Card, CardContent, Grid, MenuItem } from "@mui/material";
 import { UPDATE_USER } from "../../../graphql/mutations/user/user";
 import { Form } from "../../../assets/styles/form";
 import { GET_ALL_CAMPUS } from "../../../graphql/queries/infrastructures/campus";

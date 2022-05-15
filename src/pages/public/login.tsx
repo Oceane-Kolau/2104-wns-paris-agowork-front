@@ -4,7 +4,6 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import jwt_decode from "jwt-decode";
 import { useMutation } from "@apollo/client";
-import { Typography } from "@mui/material";
 import { LOGIN_USER } from "../../graphql/mutations/user/user";
 import {
   Title,

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormHelperText, Typography } from "@mui/material";
+import { FormHelperText } from "@mui/material";
 import InputText from "../global/form/inputText";
 import { FormError } from "../../assets/styles/global";
 
@@ -30,7 +30,8 @@ export default function RessourceForm({
         register={register}
       />
       <FormHelperText>
-        Séparez les tags par des virgules - ex: Méthodologie, Outils, Développement
+        Séparez les tags par des virgules - ex: Méthodologie, Outils,
+        Développement
       </FormHelperText>
       <InputText
         label="description"
