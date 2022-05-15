@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import News from "../../components/dashboard/news/news";
 import Chill from "../../components/dashboard/chill/chill";
 import {
@@ -9,10 +9,18 @@ import {
 } from "../../assets/styles/dashboard/dashboard";
 import MoodBoard from "../../components/dashboard/teamMood/moodBoard";
 import MoodCard from "../../components/dashboard/mood/moodDashboard";
+import { AuthContext } from "../../utils/context/authContext";
 
 export default function Dashboard(): JSX.Element {
+  const { user } = useContext(AuthContext);
+
   return (
     <>
+      <h1>
+        {!user?.campus
+          ? "👉 Vous n'avez pas encore de Campus attribué"
+          : `Campus de ${user?.campus}`}
+      </h1>
       <MoodSection>
         <MoodBoard />
         <MoodCard />
